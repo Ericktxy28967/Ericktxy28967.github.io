@@ -19,7 +19,7 @@ body {
     padding: 15px 20px;
     gap: 20%;
     box-shadow: 10px 15px 20px rgba(0, 0, 0, 0.2);
-    background: url(/BrodBrew/images/m2.jpg) no-repeat center center/cover;
+    background: url(/images/m2.jpg) no-repeat center center/cover;
 }
 .logo {
     text-decoration: none;
@@ -94,7 +94,7 @@ body {
     width: 100%;
     height: auto;
     padding: 50px 0px;
-    background: url(/BrodBrew/images/mountain-view-in-the-philippines-qrb9phaoqr6s0ez6.jpg) no-repeat center center/cover;
+    background: url(/images/mountain-view-in-the-philippines-qrb9phaoqr6s0ez6.jpg) no-repeat center center/cover;
 }
 .home-contents {
     display: flex;
@@ -205,7 +205,7 @@ body {
     align-items: center;
     padding: 20px;
     border-radius: 15px;
-    background: url(/BrodBrew/images/mountain-view-in-the-philippines-qrb9phaoqr6s0ez6.jpg) no-repeat center center/cover;
+    background: url(/images/mountain-view-in-the-philippines-qrb9phaoqr6s0ez6.jpg) no-repeat center center/cover;
 }
 .about-contents {
     display: flex;
@@ -250,25 +250,25 @@ body {
 @keyframes bg {
     0% {
         width: 100%;
-        background: url(/BrodBrew/images/mountain-view-in-the-philippines-qrb9phaoqr6s0ez6.jpg) no-repeat center center/cover;
+        background: url(/images/mountain-view-in-the-philippines-qrb9phaoqr6s0ez6.jpg) no-repeat center center/cover;
         transition: 2s ease-out;
         border-radius: 20px;
     }
     50% {
         width: 100%;
-        background: url(/BrodBrew/images/iland4.jpg) no-repeat center center/cover;
+        background: url(/images/iland4.jpg) no-repeat center center/cover;
         transition: 2s ease-out;
         border-radius: 20px;
     }
     75% {
         width: 100%;
-        background: url(/BrodBrew/images/g1.webp) no-repeat center center/cover;
+        background: url(/images/g1.webp) no-repeat center center/cover;
         transition: 2s ease-out;
         border-radius: 20px;
     }
     100% {
         width: 100%;
-        background: url(/BrodBrew/images/s4.webp) no-repeat center center/cover;
+        background: url(/images/s4.webp) no-repeat center center/cover;
         transition: 2s ease-out;
         border-radius: 20px;
     }
@@ -291,7 +291,7 @@ body {
     padding: 10% 0px;
     gap: 10%;
     border-radius: 12px;
-    background: url(/BrodBrew/images/g2.jpg) no-repeat center center/cover;
+    background: url(/images/g2.jpg) no-repeat center center/cover;
 }
 .b-title {
     color: #000000;
@@ -350,7 +350,7 @@ body {
     text-align: center;
     padding: 10% 0px;
     gap: 20%;
-    background: url(/BrodBrew/images/22986.jpg) no-repeat center center/cover;
+    background: url(/images/22986.jpg) no-repeat center center/cover;
     border-radius: 10px;
 }
 .c-title {
