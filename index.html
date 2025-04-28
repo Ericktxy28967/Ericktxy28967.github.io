@@ -3,9 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>BrodBrew.com</title>
+    <link rel="stylesheet" href="/css/homepage.css">
+    <link rel="shortcut icon" href="/BrodBrew/images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
-    <h3>Hello world</h3>
+    <nav id="home" class="navbar">
+        <a href="" class="logo">
+            <img src="/BrodBrew/images/logo.png" alt="">
+            BrodBrew
+        </a>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="menu">
+            <a href="#home">Home</a>
+            <a href="#feature">Features</a>
+            <a href="#about">About</a>
+            <a href="#community">Community</a>
+            <a id="btn" href="#">Join us</a>
+        </div>
+    </nav>
+    <div  class="homepage">
+        <div class="home-contents">
+            <div class="h-title">
+                <h1>Discover the World <i class="bi bi-globe-americas"></i> </h1>
+                <p>Your one-stop site for finding gems spot in the philippines</p>
+                <div class="cta">
+                    <a href="">Visit now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="feature" class="featurespage">
+        <div class="features-contents">
+            <div class="f-title">
+                <h3> <i style="color: orange; padding-right: 5px;" class="bi bi-star-half"></i> <span></span>Destinations that you would like!</h3>
+                <p> Philippines have spots that does belongs to the 7 wonders of the world which make them one of the tourist spot. <br> Enjoy viewing the spots that we features just for you. <br> Enjoy and Have fun! </p>
+            </div>
+            <div class="f-container">
+                <div class="f-items">
+                    <img src="/images/iland1.webp" alt="">
+                    <p>Boracay Island</p>
+                    <i style="color: orange; padding-left: 2px;" class="bi bi-star-fill"></i> <i style="color: orange; padding-left: 2px;" class="bi bi-star-fill"></i> <i style="color: orange; padding-left: 2px;" class="bi bi-star-fill"></i> <i style="color: orange; padding-left: 2px;" class="bi bi-star-fill"></i> <i style="color: orange; padding-right: 5px;" class="bi bi-star-half"> <span style="color: #000000;" >9.8 / 10</span></i> <br>
+                    <a href="#"><button>Book now</button></a>
+                </div>
+                <div class="f-items">
+                    <img src="/images/iland2.jpg" alt="">
+                    <p>7 Falls of Puerto Prinsesa</p>
+                    <i style="color: orange; padding-left: 2px;" class="bi bi-star-fill"></i> <i style="color: orange; padding-left: 2px;" class="bi bi-star-fill"></i> <i style="color: orange; padding-left: 2px;" class="bi bi-star-fill"></i> <i style="color: orange; padding-left: 2px;" class="bi bi-star-fill"></i> <i style="color: orange;" class="bi bi-star"> <span style="color: #000000;" >9.0 / 10</span></i>  <br>
+                    <a href="#"><button>Book now</button></a>
+                </div>
+                <div class="f-items">
+                    <img src="/images/iland3.jpg" alt="">
+                    <p>Banaue Rice Terraces</p>
+                    <i style="color: orange; padding-left: 2px;" class="bi bi-star-fill"></i> <i style="color: orange; padding-left: 2px;" class="bi bi-star-fill"></i> <i style="color: orange; padding-left: 2px;" class="bi bi-star-fill"></i> <i style="color: orange; padding-left: 2px;" class="bi bi-star-fill"></i> <i style="color: orange; padding-right: 5px;" class="bi bi-star-half"> <span style="color: #000000;" >9.5 / 10</span></i> <br>
+                    <a href="#"><button>Book now</button></a>
+                </div>
+                <div class="f-items">
+                    <img src="/images/iland4.jpg" alt="">
+                    <p>Cebu White Sand</p>
+                    <i style="color: orange; padding-left: 2px;" class="bi bi-star-fill"></i> <i style="color: orange; padding-left: 2px;" class="bi bi-star-fill"></i> <i style="color: orange; padding-left: 2px;" class="bi bi-star-fill"></i> <i style="color: orange; padding-left: 2px;" class="bi bi-star-fill"></i> <i style="color: orange; padding-left: 2px;" class="bi bi-star-fill"></i> <span style="color: #000000;" >9.9 / 10</span> <br>
+                    <a href="#"><button>Book now</button></a>
+                </div>
+                <div class="f-items">
+                    <img src="/images/iland5.webp" alt="">
+                    <p>Chocolate Hills Bohol</p>
+                    <i style="color: orange; padding-left: 2px;" class="bi bi-star-fill"></i> <i style="color: orange; padding-left: 2px;" class="bi bi-star-fill"></i> <i style="color: orange; padding-left: 2px;" class="bi bi-star-fill"></i> <i style="color: orange; padding-left: 2px;" class="bi bi-star-fill"></i> <i style="color: orange; padding-left: 2px;" class="bi bi-star-fill"></i> <span style="color: #000000;" >9.9 / 10</span> <br>
+                    <a href="#"><button>Book now</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="about" class="aboutpage">
+        <div class="about-contents">
+            <div class="a-title">
+                <h3>Explore <br> The Beauty of Philippines <i style="color: red;" class="bi bi-chat-heart-fill"></i> </h3>
+                <button>See More</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="community" class="branchespage">
+        <div class="branches-contents">
+            <div class="b-title">
+                <h3 style="color: orange;" >Philippines <i style="color: blue; padding-left: 2px;" class="bi bi-star-fill"></i> <i style="color: #eeee0c; padding-left: 2px;" class="bi bi-star-fill"></i> <i style="color: red; padding-left: 2px;" class="bi bi-star-fill"></i></h3>
+                <p> The Philippines, a tropical paradise in Southeast Asia, is home to breathtaking tourist destinations. From the white-sand beaches of Boracay and Palawan’s crystal-clear lagoons, to the historic streets of Intramuros and the scenic rice terraces of Banaue, every corner offers a unique adventure. Rich in culture, natural beauty, and warm hospitality, the Philippines is a must-visit destination for travelers seeking unforgettable experiences.
+                </p>
+                <div class="b-btn">
+                    <button>See More</button>
+                </div>
+            </div>
+            <div class="b-hero">
+                <img src="/images/map.png" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div class="contactpage">
+        <div class="contact-contents">
+            <div class="c-title">
+                <h3> <i style=" padding-right: 5px;" class="bi bi-envelope-at-fill"></i> Message us</h3>
+                <input  type="email" placeholder="Email" required>
+                <input type="text" placeholder="Address">
+                <input style="padding: 40px;" type="text" placeholder="Message here">
+                 <div class="c-btn">
+                    <a href="#"> <i class="bi bi-send"></i> Send</a>
+                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footerpage">
+        <div class="footer-contents">
+            <div class="fo-container">
+                <div class="fo-items">
+                    <a href="#">
+                        <img src="/images/logo.png" alt=""> BrodBrew
+                        <br>
+                        <span style="padding: 10px 0; font-weight: lighter;"> BrodBrew is a website that features best spots in the philippines</span>
+                    </a>
+                </div>
+                <div class="fo-items">
+                    <h3>Follow us</h3>
+                    <span style="padding: 10px;" >www.BrodBrew.com</span>
+                    <span>Fb: BrodBrew.Ph</span>
+                    <span style="padding: 5px;">IG: BrodBrew.Official</span>
+                </div>
+                <div class="fo-items">
+                    <h3>Help Center</h3>
+                    <span style="padding: 10px;" >FAQs</span>
+                    <span>Terms and Use</span>
+                    <span style="padding: 5px;">Privacy & Policy</span>
+                </div>
+                <div class="fo-items">
+                    <h3>@Allrights Reserved 2025</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function toggleMenu() {
+            const menu = document.querySelector('.menu');
+            menu.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>

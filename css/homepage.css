@@ -1,0 +1,443 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: #fafafa;
+    width: 100%;
+    font-family: 'Montserrat';
+}
+.navbar {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 20px;
+    gap: 20%;
+    box-shadow: 10px 15px 20px rgba(0, 0, 0, 0.2);
+    background: url(/BrodBrew/images/m2.jpg) no-repeat center center/cover;
+}
+.logo {
+    text-decoration: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    color: #fafafa;
+    font-size: 20px;
+    font-weight: bolder;
+    gap: 10px;
+}
+.logo img {
+    width: 50px;
+    height: auto;
+}
+.hamburger {
+    display: none;
+    flex-direction: column;
+}
+.hamburger div {
+    width: 25px;
+    height: 2.4px;
+    background-color: #fafafa;
+    margin: 3px 0;
+}
+.menu a{
+    padding: 0px 10px;
+    text-decoration: none;
+    color: #fafafa;
+    padding: 10px;
+}
+.menu a:hover {
+    border-bottom: 1px solid #fafafa;
+}
+.menu #btn {
+    background-color: #fafafa;
+    color: #000000;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 10px 10px 10px #000000;
+}
+@media (max-width: 768px) {
+    .menu {
+        display: none;
+        width: 100%;
+        background-color: rgb(0, 0, 0, 0.8);
+        top: 10%;
+        left: 0;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        position: fixed;
+    }
+    .hamburger {
+        display: flex;
+    }
+    .menu.active {
+        display: flex;
+    }
+    .menu a{
+        padding: 10px;
+    }
+    .navbar {
+        gap: 50%;
+    }
+}
+.homepage {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    padding: 50px 0px;
+    background: url(/BrodBrew/images/mountain-view-in-the-philippines-qrb9phaoqr6s0ez6.jpg) no-repeat center center/cover;
+}
+.home-contents {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 15% 0px;
+}
+.h-title {
+    width: 100%;
+    height: auto;
+    padding: 30px;
+}
+.h-title h1 {
+    font-size: 50px;
+    color: #fafafa;
+    font-weight: bolder;
+    text-align: center;
+}
+.h-title p {
+    text-align: center;
+    font-size: 20px;
+    color: #fafafa;
+    padding: 5px;
+}
+.cta {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+.cta a{
+    text-decoration: none;
+    color: #000000;
+    padding: 13px;
+    background-color: #fafafa;
+    border-radius: 5px;
+}
+.featurespage {
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    background-color: #fafafa;
+}
+.f-title {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 50px;
+}
+.f-title h3 {
+    font-size: 30px;
+    font-weight: 600;
+}
+.f-title p {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 400;
+    color: #666464;
+    padding: 20px;
+}
+.f-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding: 10px;
+}
+.f-items {
+    width: 300px;
+    height: 450px;
+}
+.f-items img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+.f-items p {
+    padding: 10px 0px;
+    font-size: 18px;
+}
+.f-items button {
+    margin-top: 10px;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid #666464;
+}
+.f-items button:hover {
+    transition: 0.2s ease-out;
+    background-color: #000000;
+    color: #fafafa;
+    border: none;
+}
+.aboutpage {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 15px;
+    background: url(/BrodBrew/images/mountain-view-in-the-philippines-qrb9phaoqr6s0ez6.jpg) no-repeat center center/cover;
+}
+.about-contents {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 10% 0px;
+    animation-name: bg;
+    animation-duration: 10s;
+    animation-delay: 5s;
+    animation-iteration-count: infinite;
+}
+.a-title {
+    width: 100%;
+    height: auto;
+    padding: 30px;
+    justify-content: center;
+    text-align: center;
+}
+.a-title h3 {
+    font-size: 45px;
+    color: #fafafa;
+    font-weight: 600;
+}
+.a-title p {
+    font-size: 15px;
+    padding: 20px;
+    color: #fafafa;
+}
+.a-title button {
+    padding: 15px;
+    font-size: 15px;
+    color: #000000;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+.a-title button:hover {
+    background-color:  #000000;
+    color: #fafafa;
+}
+@keyframes bg {
+    0% {
+        width: 100%;
+        background: url(/BrodBrew/images/mountain-view-in-the-philippines-qrb9phaoqr6s0ez6.jpg) no-repeat center center/cover;
+        transition: 2s ease-out;
+        border-radius: 20px;
+    }
+    50% {
+        width: 100%;
+        background: url(/BrodBrew/images/iland4.jpg) no-repeat center center/cover;
+        transition: 2s ease-out;
+        border-radius: 20px;
+    }
+    75% {
+        width: 100%;
+        background: url(/BrodBrew/images/g1.webp) no-repeat center center/cover;
+        transition: 2s ease-out;
+        border-radius: 20px;
+    }
+    100% {
+        width: 100%;
+        background: url(/BrodBrew/images/s4.webp) no-repeat center center/cover;
+        transition: 2s ease-out;
+        border-radius: 20px;
+    }
+}
+.branchespage {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    padding: 20px;
+    background-color: #eeeeee;
+}
+.branches-contents {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 10% 0px;
+    gap: 10%;
+    border-radius: 12px;
+    background: url(/BrodBrew/images/g2.jpg) no-repeat center center/cover;
+}
+.b-title {
+    color: #000000;
+    width: 500px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+}
+.b-title h3 {
+    font-size: 25px;
+}
+.b-title p {
+    font-size: 18px;
+    padding: 10px 0px;
+    color: #fafafa;
+}
+.b-title button {
+    width: 90px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+}
+.b-title button:hover {
+    background-color: #000000;
+    color: #fafafa;
+    transition: 0.5s ease-out;
+    cursor: pointer;
+}
+.b-hero {
+    width: 500px;
+    height: 100%;
+    border-radius: 10px;
+}
+.b-hero img {
+    width: 100%;
+    height: 500px;
+    padding: 20px;
+}
+.contactpage {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    align-items: center;
+}
+.contact-contents {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10% 0px;
+    gap: 20%;
+    background: url(/BrodBrew/images/22986.jpg) no-repeat center center/cover;
+    border-radius: 10px;
+}
+.c-title {
+    width: 500px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    border-radius: 10px;
+    gap: 20px;
+    padding: 20px;
+}
+.c-title h3 {
+    font-size: 30px;
+    color: #fafafa;
+}
+.c-title input {
+    width: 100%;
+    padding: 20px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+}
+.c-btn {
+    padding: 20px;
+}
+.c-btn a {
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 18px;
+    text-decoration: none;
+    color: #000000;
+    background-color: #fafafa;
+}
+.footerpage {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: #fafafa;
+    background-color: #000000;
+}
+.footer-contents {
+    width: 100%;
+    height: auto;
+    padding: 5%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.fo-container {
+    padding: 20px;
+   width: 100%;
+   height: auto;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   align-items: center;
+   gap: 80px; 
+}
+.fo-items {
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    text-align: center;
+}
+.fo-items img {
+    width: 50px;
+    height: 50px;
+}
+.fo-items a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #fafafa;
+    font-weight: 600;
+}
+.fo-items h3 {
+    font-weight: 600;
+}
