@@ -115,6 +115,16 @@
                 transform: translateX(0);
             }
         }
+        input[type="number"].no-spinner::-webkit-outer-spin-button,
+        input[type="number"].no-spinner::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        }
+
+        input[type="number"].no-spinner {
+        -moz-appearance: textfield;
+        }
+
     </style>
 </head>
 <body>
@@ -160,11 +170,11 @@
                     <form action="POST" class=" w-full h-auto flex flex-col gap-10 px-20 max-md:px-10">
                         <span class="w-auto h-auto flex flex-row gap-2">
                             <i class="bi bi-person-circle text-[25px]"></i>
-                            <input type="email" name="email" id="email_" placeholder="Type username or email here" class="border-b-[1px] border-[#5A5757] bg-transparent text-[14px] w-full text-[#000000] outline-none" required>
+                            <input type="email" name="email" id="email" placeholder="Type username or email here" class="border-b-[1px] border-[#5A5757] bg-transparent text-[14px] w-full text-[#000000] outline-none" required>
                         </span>
                         <span class="w-auto h-auto flex flex-row gap-2">
                             <i class="bi bi-lock text-[25px]"></i>
-                            <input type="password" name="pass" id="pass_" placeholder="Enter password here" class="border-b-[1px] border-[#5A5757] bg-transparent text-[14px] w-full outline-none text-[#000000]" required>
+                            <input type="password" name="pass" id="pass" placeholder="Enter password here" class="border-b-[1px] border-[#5A5757] bg-transparent text-[14px] w-full outline-none text-[#000000]" required>
                         </span>
                     </form>
                     <span>
@@ -179,7 +189,7 @@
                         </span>
                     </span>
                     <span class="flex text-[18px] bg-[#10451B] text-[#fafafa] px-7 py-2">
-                        <a href="#">Login</a>
+                        <button id="login" type="submit" onclick="loginButton()">Login</button>
                     </span>
                     <span class="text-[15px]">Sign in with</span>
                     <span id="about" class="flex flex-row gap-3">
@@ -280,77 +290,77 @@
                        <div class="w-[500px] h-auto flex flex-col justify-center items-center text-center  ">
                 <div class=" w-full h-full flex flex-col justify-center items-center text-center bg-[#94F7DC] rounded-[20px] gap-5 pb-10">
                     <span class="text-[24px] text-[#434443] pt-10">Contact us</span>
-                    <form action="POST" class=" w-full h-auto flex flex-col gap-5 px-20 max-md:px-10">
+                    <form method="POST" class=" w-full h-auto flex flex-col gap-5 px-20 max-md:px-10">
                         <span class="w-auto h-auto flex flex-row gap-2">
                             <i class="bi bi-person-circle text-[25px]"></i>
-                            <input type="email" name="email" id="email_" placeholder="Email" class="border-b-[1px] border-[#5A5757] bg-transparent text-[16px] w-full text-[#000000] outline-none" required>
+                            <input type="email" id="email_" placeholder="Email" class="border-b-[1px] border-[#5A5757] bg-transparent text-[16px] w-full text-[#000000] outline-none" required>
                         </span>
                         <span class="w-auto h-auto flex flex-row gap-2">
                             <i class="bi bi-telephone text-[25px]"></i>
-                            <input type="number" name="pass" id="pass_" placeholder="Number" class="border-b-[1px] border-[#5A5757] bg-transparent text-[14px] w-full outline-none text-[#000000]" required>
+                            <input type="number" name="number" id="number_" placeholder="Number" class="no-spinner border-b-[1px] border-[#5A5757] bg-transparent text-[14px] w-full outline-none text-[#000000]" required>
                         </span>
                         <span class="w-auto h-auto flex flex-row gap-2">
                             <i class="bi bi-house-fill text-[25px]"></i>
                             <input type="address" name="address" id="address_" placeholder="Address" class="border-b-[1px] border-[#5A5757] bg-transparent text-[14px] w-full outline-none text-[#000000]" required>
                         </span>
                     </form>
-                    <form action="get" method="post" class="w-full h-[150px] flex px-20 max-md:px-10">
+                    <form method="POST" class="w-full h-[150px] flex px-20 max-md:px-10">
                         <textarea name="message" id="messagehere" cols="1" rows="2" placeholder='Message' class='bg-transparent outline-none overflow-hidden w-full h-[150px] rounded-[12px] p-5 font-bold text-[18px] border-2 border-[#5A5757]'></textarea>
                     </form>
                     <span class="flex text-[18px] bg-[#434443] text-[#fafafa] px-7 py-2 rounded-[12px]">
-                        <a href="#">Send</a>
+                        <button href="#" id="email-send" type="submit" onclick="emailButtonClick()">Send</button>
                     </span>
                 </div>
                      </div>
 
-                            <div class="w-[500px] h-auto flex flex-col justify-center items-center text-center gap-5">
+                            <div class="w-[500px] h-auto flex flex-col justify-center items-center text-center gap-5 pb-10">
                                 <div class="w-full h-auto flex flex-col justify-center items-center text-left gap-2">
                                     <div class="flex flex-row px-1 animation-left">
                                     <img src="./assets/main/leaves2.png" alt="leave1" class="w-[50px] h-[50px] object-contain">
-                                    <img src="./assets/main/logomm.png" alt="icon" class="w-[50px] h-[50px] object-fill">
+                                    <img src="./assets/main/mm.png" alt="icon" class="w-[50px] h-[50px] object-contain">
                                     <img src="./assets/main/leaves.png" alt="leave2" class="w-[50px] h-[50px] object-contain">
                                     </div>
                                     <span class="text-[25px] text-[#08684e] animation-left">Meal Master</span>
                                 </div>
                                 <span class="px-20 max-md:px-5 text-justify pt-10 text-[20px] animation-left">We love hearing from our users! Whether you have questions, feedback, or need assistance, out team is here to help.</span>
                                 <a href="#home" class="pt-10 underline animation-left">Back to top >></a>
-                                <div class="w-full h-auto flex justify-end">
+                                <!-- <div class="w-full h-auto flex justify-end">
                                     <img src="./assets/main/leaves2.png" alt="leaves-icon" class="w-[200px] h-auto object-cover">
-                                </div>
+                                </div> -->
                             </div>
 
                     </div>
                     </div>                  
              </div>
 
-                            <div class="w-full h-auto flex flex-col justify-center items-center text-center bg-[#000000] pt-10 pb-10">
+                            <div class="w-full h-auto flex flex-col justify-center items-center text-center bg-[#000000] pt-5 pb-5 mt-5">
                                 <div class="w-full h-auto flex flex-wrap justify-center items-center text-center gap-10 p-5">
-                                    <div class="w-[400px] h-auto flex flex-col justify-center items-center text-center text-[#404040] gap-3">
+                                    <div class="w-[400px] h-auto flex flex-col justify-center items-center text-center text-[#D9D9D9] gap-3">
                                     <div class="flex flex-row px-1 animation-left">
                                     <img src="./assets/main/leaves2.png" alt="leave1" class="w-[50px] h-[50px] object-contain">
-                                    <img src="./assets/main/logomm.png" alt="icon" class="w-[50px] h-[50px] object-cover">
+                                    <img src="./assets/main/mm.png" alt="icon" class="w-[50px] h-[50px] object-contain">
                                     <img src="./assets/main/leaves.png" alt="leave2" class="w-[50px] h-[50px] object-contain">
                                     </div>
                                     <span class="text-[35px] text-[#08684e]">Meal Master</span>
-                                    <span class="text-[#fafafa] px-1 pb-2">Meal Master aims to provide personalized meal suggestions, tracking ingredients, and generating grocery lists. Based on user's budget and dietary preferences.</span>
+                                    <span class="text-[#D9D9D9] text-[12px] px-1 pb-2">Meal Master aims to provide personalized meal suggestions, tracking ingredients, and generating grocery lists. Based on user's budget and dietary preferences.</span>
                                     <div class="flex flex-col">
                                         <span class="text-[20px] text-[#b8b8b8] pb-3">Follow us: <i class="bi bi-envelope-at-fill text-white-600 text-[25px]"></i> <i class="bi bi-facebook text-blue-600 text-[25px]"></i></span>
-                                        <a href="#" class=" text-[20px] text-[#fafafa] flex justify-center items-center text-center gap-2">MealMaster.com</a> 
-                                        <a href="#" class=" text-[18px] text-[#fafafa] flex justify-center items-center text-center gap-2">MealMasterOfficial@gmail.com</a> 
+                                        <a href="#" class=" text-[12px] text-[#D9D9D9] flex justify-center items-center text-center gap-2">MealMaster.com</a> 
+                                        <a href="#" class=" text-[12px] text-[#D9D9D9] flex justify-center items-center text-center gap-2">MealMasterOfficial@gmail.com</a> 
                                     </div>
                                     </div>
-                                    <div class="w-[400px] h-auto flex flex-col justify-center items-center text-center text-[#fafafa]">
+                                    <div class="w-[400px] h-auto flex flex-col justify-center items-center text-center text-[#D9D9D9]">
                                         <span class=" text-[20px] flex gap-1"> <i class="bi bi-headset text-[25px]"></i>Support</span>
-                                        <span class=" px-1 w-[300px]">For any technical issues or urgent inquiries, please visit out page for immediate assistance.</span>
-                                        <span class=" text-[20px] pt-10">Help Center</span>
-                                        <span class=" text-[20px]">FAO</span>
-                                        <span class=" text-[15px]">What to do?</span>
-                                        <span class="text-[15px]">How to sign up?</span>
+                                        <span class=" px-1 w-[300px] text-[12px]">For any technical issues or urgent inquiries, please visit out page for immediate assistance.</span>
+                                        <span class=" text-[12px] pt-10">Help Center</span>
+                                        <span class=" text-[12px]">FAO</span>
+                                        <span class=" text-[12px]">What to do? >></span>
+                                        <span class="text-[12px]">How to sign up? >></span>
                                     </div>
-                                    <div class="w-[400px] h-auto flex flex-col justify-center items-center text-center text-[#fafafa] gap-2">
-                                        <span class="text-[20px]">Latest News</span>
-                                        <span class="text-[18px] flex flex-col w-[300px] px-1 gap-2"> <i class="bi bi-exclamation-diamond-fill text-red-400 text-[30px]"></i>Were developing meal master grocery list app soon !!</span>
-                                        <span class="text-[18px]  flex flex-col w-[300px] px-1 gap-2"><i class="bi bi-calendar-check-fill text-[30px]"></i>Real time notification with youre calendar soon with meal master syncing meal plan.</span>
+                                    <div class="w-[400px] h-auto flex flex-col justify-center items-center text-center text-[#D9D9D9] gap-2">
+                                        <span class="text-[15px]">Latest News</span>
+                                        <span class="text-[12px] flex flex-col w-[300px] px-1 gap-2"> <i class="bi bi-exclamation-diamond-fill text-red-400 text-[30px]"></i>Were developing meal master grocery list app soon !!</span>
+                                        <span class="text-[12px]  flex flex-col w-[300px] px-1 gap-2"><i class="bi bi-calendar-check-fill text-[30px]"></i>Real time notification with youre calendar soon with meal master syncing meal plan.</span>
                                     </div>
                                 </div>
                             </div>
@@ -359,6 +369,43 @@
             const menu = document.querySelector('.menu');
             menu.classList.toggle('active');
         }
+        const emailButton = document.getElementById('email-send');
+        const emailInput = document.getElementById('email_');
+        const emailNumber = document.getElementById('number_');
+        const emailAddress = document.getElementById('address_');
+        const emailMessage = document.getElementById('messagehere');
+        emailButton.addEventListener('click', emailButtonClick);
+
+        function emailButtonClick() {
+        const email = emailInput.value;
+        const number = emailNumber.value;
+        const address = emailAddress.value;
+        const message = emailMessage.value;
+
+        if (email === 'ericjohn' && number === '1234567890' && address === 'sitio' && message === 'Hello') {
+            alert(
+                'Email sent successfully!/n');
+        } else {
+            alert('Please fill in all fields correctly.');
+        }
+    }
+
+        const loginEmail = document.getElementById('email');
+        const loginPass = document.getElementById('pass');
+        const loginButton = document.getElementById('login');
+        loginButton.addEventListener('click', loginButtonClick);
+
+        function loginButtonClick() {
+            const email = loginEmail.value;
+            const pass = loginPass.value;
+
+            if (email === 'ericjohn' && pass === '123456') {
+                window.location.href = './templates/hompage.html';
+            } else {
+                alert('Invalid username or password.');
+            }
+        }
+
     </script>
 </body>
 </html>
