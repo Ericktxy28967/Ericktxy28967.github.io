@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>www.Auréa.com</title>
+    <link rel="shortcut icon" href="./assets//images//favicon.png" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins';
+            background-color: #fafafa;
+        }
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            background-color: #E9F6E4;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        .hamburger div {
+            height: 2px;
+            width: 25px;
+            margin: 3px 0px;
+            background-color: #000000;
+            transition: 0.3s;
+        }
+        .menu ul {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+        @media (max-width: 768px) {
+            .menu {
+                position: absolute;
+                display: flex;
+                flex-direction: column;
+                top: 0px;
+                left: 0px;
+                width: 250px;
+                height: 100dvh;
+                background-color: rgb(0, 0, 0, 0.5);
+                color: #fafafa;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease-in-out;
+            }
+            .menu.active {
+                transform: translateX(0);
+            }
+            .hamburger {
+                display: flex;
+            }
+            .menu ul {
+                display: flex;
+                height: 100%;
+                width: 100%;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            #order-btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar flex items-center justify-evenly w-full h-auto p-4 ">
+            <span class="text-[35px] text-[#4E5D48]">Auréa</span>
+            <div class="hamburger" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="menu">
+                <ul class="text-[15px] gap-10 outline-none">
+                    <li><a href="#">Story</a></li>
+                    <li><a href="#">Manufactoring</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Team</a></li>
+                </ul>
+            </div>
+            <a href="#" class="text-[13px] bg-[#4E5D48] text-[#fafafa] p-3 rounded-[5px]" id="order-btn">
+                <span>Order Now</span>
+            </a>
+        </div>
+    <div class="homepage flex flex-col items-center justify-center h-auto w-full bg-[#E9F6E4]">
+            <div class="flex flex-wrap items-center justify-center w-full h-auto p-5 py-5 px-1 gap-5" style="background: url(./assets/images/bg1.png); background-size: cover; background-position: center; background-repeat: no-repeat;">  
+                 <div class="w-[800px] h-auto max-sm:h-[600px] flex items-center justify-center text-center text-white flex-col p-5 gap-5">
+                    <span class="flex flex-col gap-4 py-5 border-b-[1px] border-gray-400 text-left">
+                        <span class="text-[25px] max-sm:text-[20px] text-gray-400 w-full text-left">FREE DELIVERY WORLDWIDE</span>
+                        <span class="text-[#374133] max-md:text-[55px] max-sm:text-[45px] text-[100px] font-bold leading-none">Feed Your Skin, Find Your Glow.</span>
+                        <span class="w-full text-left text-[25px] font-bold text-[#4E5D48]">Natural Inner Beauty</span>
+                        <span class="w-full text-left text-gray-600">Enhance Your Radiance with Clean, Science-Driven Skincare - Cruelty-Free, Sustainable, and Enriched with Antioxidants for Healthy, Timeless Skin</span>
+                    </span>
+                        <span class="flex items-left w-full">
+                            <a href="#" id="order-btn-two" class="p-4 px-10 rounded-[4px] bg-[#4E5D48]">Order Now <i class="bi bi-arrow-up-right"></i></a>
+                        </span>
+                </div>
+                     <div class="w-[800px] h-[800px] max-sm:h-[400px] flex items-center justify-center">
+                        <img src="./assets/images/hero.png" alt="hero-image" class="w-full h-auto p-20">
+                    </div>
+           </div>
+    </div>
+
+        <div class="flex flex-wrap items-center justify-evenly w-full h-auto gap-4 p-5 py-10 bg-[#728869]">
+            <div class="flex w-[500px] h-auto text-gray-200 text-[25px]">
+                <span>Trusted by over 10,000+ clients worldwide since 2018.</span>
+            </div>
+            <div class="flex flex-wrap justify-center items-center w-auto h-auto text-gray-200 text-[25px] gap-10">
+                <span class="flex flex-col gap-1 items-center border-2 border-gray-400 p-5 px-10">
+                    <span class="text-[55px]">4.8</span>
+                    <span class="text-[18px] text-yellow-500"><i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i></span>
+                    <span class="text-[15px]">4,300 ratings</span>
+                </span>
+                <span class="flex flex-col items-center gap-1 border-2 border-gray-400 p-5 py-6 px-10">
+                    <span class="text-[55px]">1.7M</span>
+                    <span class="text-[15px]">Worldwide products <br> sold per year.</span>
+                </span>
+            </div>
+        </div>
+
+            <div class="flex flex-col items-center justify-center text-center w-full h-auto p-5 py-10 gap-2 bg-gray-100">
+                <span class="flex flex-row items-center justify-center gap-2 pt-5 text-gray-400 text-[18px]"><span class="w-[35px] h-[2px] bg-gray-300 flex"></span> Benefits <span class="w-[35px] h-[2px] bg-gray-300 flex"></span></span>
+                <span class="text-[55px] text-[#485742] max-md:text-[40px] font-semibold">Here at Auréa Healthy Skin Means a Healthier You</span>
+                <div class="w-full h-auto flex flex-wrap items-center justify-center gap-4 p-5">
+                    <div class="w-[800px] h-[800px] max-sm:h-[400px] items-center justify-center flex rounded-[2px]">
+                        <img src="./assets/images/hero_2.png" alt="benefits-image" class="w-full h-auto p-20 max-md:p-5 rounded-[50px]">
+                    </div>
+                    <div class="w-[800px] h-auto flex flex-col p-2">
+                        <span class="flex flex-row w-full items-left justify-left gap-10 py-8 border-b-2 border-gray-200">
+                            <img src="./assets/icons/benefits-icons/hydration.png" alt="hydration-icon" class="w-[50px] h-[50px] object-cover rounded-[5px]">
+                            <span class="flex flex-col items-left text-left gap-1">
+                                <span class="text-[20px] font-semibold text-[#6F8A63]">Deep Hydration</span>
+                                <span class="text-[15px] text-gray-600">Locks in moisture to keep skin supple, smooth and comfortable throughout the day.</span>
+                            </span>
+                        </span>
+                        <span class="flex flex-row w-full items-left justify-left gap-10 py-8 border-b-2 border-gray-200">
+                            <img src="./assets/icons/benefits-icons/radiance.png" alt="hydration-icon" class="w-[50px] h-[50px] object-cover rounded-[5px]">
+                            <span class="flex flex-col items-left text-left gap-1">
+                                <span class="text-[20px] font-semibold text-[#6F8A63]">Radiance Boost</span>
+                                <span class="text-[15px] text-gray-600">Enriched with natural antioxidants to revive dullness and enhance your skin's natural glow</span>
+                            </span>
+                        </span>
+                        <span class="flex flex-row w-full items-left justify-left gap-10 py-8 border-b-2 border-gray-200">
+                            <img src="./assets/icons/benefits-icons/skin.png" alt="hydration-icon" class="w-[50px] h-[50px] object-cover rounded-[5px]">
+                            <span class="flex flex-col items-left text-left gap-1">
+                                <span class="text-[20px] font-semibold text-[#6F8A63]">Skin Barrier Support</span>
+                                <span class="text-[15px] text-gray-600">Strengthens and protects against environmental stressors for healthier, more resilient skin.</span>
+                            </span>
+                        </span>
+                        <span class="flex flex-row w-full items-left justify-left gap-10 py-8 border-b-2 border-gray-200">
+                            <img src="./assets/icons/benefits-icons/natural.png" alt="hydration-icon" class="w-[50px] h-[50px] object-cover rounded-[5px]">
+                            <span class="flex flex-col items-left text-left gap-1">
+                                <span class="text-[20px] font-semibold text-[#6F8A63]">Powered by Natural Ingredients</span>
+                                <span class="text-[15px] text-gray-600">Formulated with botanically derived oils and plants extracts to nourish, protect, and restore - free from synthetic filters or harsh chemicals</span>
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+                <div class="w-full h-auto py-20 flex flex-col items-center justify-center gap-10 bg-[#fafafa] p-5">
+                        <span class="text-[55px] text-[#485742] max-md:text-[40px] font-semibold p-5">Check Out Our Products</span>
+                        <div class="flex w-full h-auto flex-wrap items-center justify-evenly gap-10 p-5">
+                            <span class="flex flex-col items-center justify-center gap-4">
+                                <span class="flex p-[50px] rounded-full bg-[#E9F6E4]"><img src="./assets/icons/products/cream.png" alt="cream" class="w-[100px] h-[100px] object-cover"></span>
+                                <span class="text-[20px] font-semibold text-[#485742]">Cream</span>
+                            </span>
+                            <span class="flex flex-col items-center justify-center gap-4">
+                                <span class="flex p-[50px] rounded-full bg-[#E9F6E4]"><img src="./assets/icons/products/serum.png" alt="cream" class="w-[100px] h-[100px] object-cover"></span>
+                                <span class="text-[20px] font-semibold text-[#485742]">Cream</span>
+                            </span>
+                            <span class="flex flex-col items-center justify-center gap-4">
+                                <span class="flex p-[50px] rounded-full bg-[#E9F6E4]"><img src="./assets/icons/products/lotion.png" alt="cream" class="w-[100px] h-[100px] object-cover"></span>
+                                <span class="text-[20px] font-semibold text-[#485742]">Cream</span>
+                            </span>
+                            <span class="flex flex-col items-center justify-center gap-4">
+                                <span class="flex p-[50px] rounded-full bg-[#E9F6E4]"><img src="./assets/icons/products/sunscreen.png" alt="cream" class="w-[100px] h-[100px] object-cover"></span>
+                                <span class="text-[20px] font-semibold text-[#485742]">Cream</span>
+                            </span>
+                            <span class="flex flex-col items-center justify-center gap-4">
+                                <span class="flex p-[50px] rounded-full bg-[#E9F6E4]"><img src="./assets/icons/products/coconut-oil.png" alt="cream" class="w-[100px] h-[100px] object-cover"></span>
+                                <span class="text-[20px] font-semibold text-[#485742]">Cream</span>
+                            </span>
+                        </div>
+                        <a href="#" class="px-5 py-4 bg-[#485742] text-white rounded-[5px]">View Collection</a>
+                </div>
+
+                <div class="flex flex-wrap py-5 w-full justify-center items-center gap-4 h-auto bg-[#ECECEC] p-5">
+                    <div class="w-[800px] h-auto flex flex-col items-left text-left justify-left gap-1 p-5">
+                        <span class="flex flex-col py-10 border-b-[1px] border-gray-400">
+                            <span class="flex w-full flex-row items-center justify-left text-left gap-2 pt-5 text-gray-400 text-[18px]"><span class="w-[35px] h-[2px] bg-gray-300 flex"></span> About us <span class="w-[35px] h-[2px] bg-gray-300 flex"></span></span>
+                            <span class="text-[55px] text-[#485742] max-md:text-[40px] font-semibold">The Heart of Auréa</span>
+                            <span class="text-[20px] text-gray-600">At Auréa, we believe that radiant skin starts with the purest ingredients and the gentlest core. Our mission is simple, to craft skincare that's as nourishing for your skin as it is kind to the planet. Inspired by nature and guided by science, every Auréa products blends patent botanical extracts with proven ingredients to deliver visible results without compromise.</span>
+                        </span>
+                        <span class="flex items-left w-full text-[#fafafa] py-5">
+                            <a href="#" id="order-btn-two" class="p-4 px-10 rounded-[4px] bg-[#4E5D48]">Order Now <i class="bi bi-arrow-up-right"></i></a>
+                        </span>
+                    </div>
+                    <div class="w-[800px] h-[700px] max-sm:h-[400px] flex items-center justify-center p-5">
+                        <img src="assets/images/hero_3.png" alt="about-image" class="w-full h-auto p- rounded-[20px]">
+                    </div>
+                </div>
+
+                    <div class="w-full h-auto flex flex-col items-center justify-center gap-5 py-20 p-5 bg-[#fafafa]">
+                        <span class="flex flex-row items-center justify-center gap-2 pt-5 text-gray-400 text-[18px]"><span class="w-[35px] h-[2px] bg-gray-300 flex"></span> Testimonials <span class="w-[35px] h-[2px] bg-gray-300 flex"></span></span>
+                        <span class="text-[55px] text-[#485742] max-md:text-[40px] font-semibold">See what Our customers have to say</span>
+                        <div class="w-full h-auto flex flex-wrap items-center justify-evenly gap-10 p-2 py-10">
+                            <div class="w-[400px] h-[300px] bg-white flex flex-col rounded-[5px] items-center p-5 py-10 gap-5 shadow-[0px_0px_10px_rgba(0,0,0,0.4)]">
+                                <span class="flex flex-row items-center gap-20">
+                                    <span class="flex items-center gap-4">
+                                        <img src="./assets/images//user/@fdhdjlae_.jpg" alt="profile-image" class="w-[30px] h-[30px] rounded-full">
+                                        <span class="text-[15px] font-semibold text-[#9C9C9C]">By Emily R.</span>
+                                    </span>
+                                    <span class="text-gray-600"><i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i></span>
+                                </span>
+                                <span class="text-[12px] italic text-[#B6B5B5]">"I've tried countless serums, but Auréa's Celestial Glow Serum is next-level Within a week, my skin looked brighter and felt smoother-like I'd gotten a professional facial. The roseship oil blend is divine and a little goes a long way. Worth every penny!"</span>
+                            </div>
+                            <div class="w-[400px] h-[300px] bg-white flex flex-col rounded-[5px] items-center p-5 py-10 gap-5 shadow-[0px_0px_10px_rgba(0,0,0,0.4)]">
+                                <span class="flex flex-row items-center gap-20">
+                                    <span class="flex items-center gap-4">
+                                        <img src="./assets//images//user/@xinsooo.jpg" alt="profile-image" class="w-[30px] h-[30px] rounded-full">
+                                        <span class="text-[15px] font-semibold text-[#9C9C9C]">By Tom F.</span>
+                                    </span>
+                                    <span class="text-gray-600"><i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i></span>
+                                </span>
+                                <span class="text-[12px] italic text-[#B6B5B5]">"I've tried countless serums, but Auréa's Celestial Glow Serum is next-level Within a week, my skin looked brighter and felt smoother-like I'd gotten a professional facial. The roseship oil blend is divine and a little goes a long way. Worth every penny!"</span>
+                            </div>
+                            <div class="w-[400px] h-[300px] bg-white flex flex-col rounded-[5px] items-center p-5 py-10 gap-4 shadow-[0px_0px_10px_rgba(0,0,0,0.4)]">
+                                <span class="flex flex-row items-center gap-20">
+                                    <span class="flex items-center gap-4">
+                                        <img src="./assets//images/user/user.png" alt="profile-image" class="w-[30px] h-[30px] rounded-full">
+                                        <span class="text-[15px] font-semibold text-[#9C9C9C]">By Don E.</span>
+                                    </span>
+                                    <span class="text-gray-600"><i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i></span>
+                                </span>
+                                <span class="text-[12px] italic text-[#B6B5B5]">"I've tried countless serums, but Auréa's Celestial Glow Serum is next-level Within a week, my skin looked brighter and felt smoother-like I'd gotten a professional facial. The roseship oil blend is divine and a little goes a long way. Worth every penny!"</span>
+                            </div>
+                            <div class="w-[400px] h-[300px] bg-white flex flex-col rounded-[5px] items-center p-5 py-10 gap-4 shadow-[0px_0px_10px_rgba(0,0,0,0.4)]">
+                                <span class="flex flex-row items-center gap-20">
+                                    <span class="flex items-center gap-4">
+                                        <img src="./assets/images/user/Го Юн Чжон.jpg" alt="profile-image" class="w-[30px] h-[30px] rounded-full object-cover">
+                                        <span class="text-[15px] font-semibold text-[#9C9C9C]">By Ken S.</span>
+                                    </span>
+                                    <span class="text-gray-600"><i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i></span>
+                                </span>
+                                <span class="text-[12px] italic text-[#B6B5B5]">"I've tried countless serums, but Auréa's Celestial Glow Serum is next-level Within a week, my skin looked brighter and felt smoother-like I'd gotten a professional facial. The roseship oil blend is divine and a little goes a long way. Worth every penny!"</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-full h-auto flex flex-wrap items-center justify-center gap-5 py-20 p-5 bg-[#ECECEC]">
+                        <div class="w-[800px] h-auto flex flex-col items-left text-left justify-left gap-5 p-5">
+                        <span class="flex flex-col py-10 border-b-[1px] border-gray-400">
+                            <span class="text-[55px] text-[#485742] max-md:text-[40px]">Subscribe to our newsletter</span>
+                            <span class="text-[20px] text-gray-600">Subscribe to our newsletter and become part of a community that believes in radiant skin and a radiant planet.</span>
+                        </span>
+                        <span class="flex flex-wrap items-center justify-between px-4 rounded-[5px] w-full text-gray-600 py-3 bg-white">
+                            <input type="text" placeholder="Enter your email address" class="w-auto h-[50px] p-3 rounded-[5px] border-none outline-none bg-transparent">
+                            <a href="#" id="order-btn-two" class="text-white p-4 px-10 rounded-[4px] bg-[#4E5D48]">Subscribe</a>
+                        </span>
+                        </div>
+                        <div class="w-[800px] h-[500px] max-sm:h-[400px] flex items-center justify-center p-5">
+                            <img src="assets/images/hero_4.png" alt="about-image" class="w-full h-auto p- rounded-[20px]">
+                        </div>
+                    </div>
+
+                    <div class="w-full h-auto flex flex-wrap items-left text-left justify-evenly py-10 px-10 bg-[#DCEFE0] gap-10">
+                        <span class="w-[500px] flex flex-col items-center text-left justify-center gap-">
+                            <span class="flex flex-col text-[#A6A6A6]">
+                                <span class="text-[45px] text-[#374133]">Auréa</span>
+                                <span>Tel +77 568573843</span>
+                                <span>aureax@support.com</span>
+                                <span>Mon Sat 8am-7pm GMT</span>
+                            </span>
+                        </span>
+                        <span class="w-auto flex flex-wrap text-left max-md:justify-center gap-10">
+                            <span class="flex flex-col text-[#A6A6A6]">
+                                <span class="py-3">Navigation</span>
+                                <span>Home</span>
+                                <span>Our Products</span>
+                                <span>Collection</span>
+                            </span>
+                            <span class="flex flex-col text-[#A6A6A6]">
+                                <span class="py-3">Company</span>
+                                <span>About Us</span>
+                                <span>Testimonials</span>
+                                <span>Subscribe</span>
+                            </span>
+                            <span class="flex flex-col text-[#A6A6A6]">
+                                <span class="py-3">Resources</span>
+                                <span>Privacy & Policy</span>
+                                <span>Terms and <br> Conditions</span>
+                            </span>
+                            <span class="flex flex-col text-[#A6A6A6]">
+                                <span class="py-3">Services</span>
+                                <span>Contact</span>
+                            </span>
+                            <span class="flex flex-col text-[#A6A6A6]">
+                                <span class="py-3">Follow us</span>
+                                <span class="flex flex-row gap-2">
+                                    <span><i class="bi bi-twitter"></i></span>
+                                    <span><i class="bi bi-tiktok"></i></span>
+                                    <span><i class="bi bi-facebook"></i></span>
+                                </span>
+                            </span>
+                        </span>
+                    </div>
+    <script>
+        function toggleMenu() {
+            const menu = document.querySelector('.menu');
+            menu.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
