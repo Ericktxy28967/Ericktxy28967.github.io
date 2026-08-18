@@ -1,222 +1,944 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>GEC09 — Life of Rizal | Eric John S. Solinap</title>
+    <title>For My Saii — A Love Letter</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Great+Vibes&family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
     <style>
       :root {
-        --accent: #2b6cb0;
-        --muted: #6b7280;
-        --bg: #f7fafc;
+        --rose: #d94b72;
+        --deep: #8d2949;
+        --cream: #fffaf2;
+        --paper: #f2dfb8;
+        --ink: #4b3027;
+        --gold: #b78643;
+        --shadow: rgba(80, 34, 42, 0.18);
       }
       * {
         box-sizing: border-box;
       }
+      html {
+        scroll-behavior: smooth;
+      }
       body {
-        font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto,
-          "Helvetica Neue", Arial;
         margin: 0;
-        background: var(--bg);
-        color: #111;
+        color: var(--ink);
+        font-family: Poppins, sans-serif;
+        background:
+          radial-gradient(circle at 20% 10%, #fff 0 10%, transparent 30%),
+          linear-gradient(135deg, #fff8fb, #fbeaf0 50%, #fff7ee);
+        overflow-x: hidden;
       }
-      .container {
-        max-width: 900px;
-        margin: 36px auto;
-        padding: 24px;
-        background: white;
-        border-radius: 12px;
-        box-shadow: 0 10px 30px rgba(17, 24, 39, 0.06);
+      button {
+        font: inherit;
       }
-      header {
+      body.locked {
+        overflow: hidden;
+      }
+
+      /* PASSWORD GATE */
+      #gate {
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        display: grid;
+        place-items: center;
+        padding: 22px;
+        background: radial-gradient(
+          circle at 50% 20%,
+          #fff5f8,
+          #eab1c1 55%,
+          #8d2949
+        );
+      }
+      .gate-card {
+        width: min(520px, 100%);
+        padding: 48px 34px;
+        text-align: center;
+        border: 1px solid rgba(255, 255, 255, 0.55);
+        border-radius: 28px;
+        background: rgba(255, 250, 244, 0.92);
+        box-shadow: 0 35px 100px rgba(70, 16, 35, 0.35);
+        backdrop-filter: blur(12px);
+      }
+      .gate-heart {
+        font-size: 58px;
+        animation: heartbeat 1.5s infinite;
+      }
+      .gate-card h1 {
+        font-family: "Great Vibes";
+        font-size: 54px;
+        color: var(--deep);
+        margin: 8px 0;
+      }
+      .gate-card p {
+        color: #76555b;
+      }
+      .date-input {
+        width: 100%;
+        padding: 15px 18px;
+        border: 1px solid #e0b5c1;
+        border-radius: 14px;
+        background: #fff;
+        font-size: 17px;
+        outline: none;
+        text-align: center;
+      }
+      .date-input:focus {
+        box-shadow: 0 0 0 4px #f7dce5;
+      }
+      .unlock {
+        margin-top: 14px;
+        width: 100%;
+        border: 0;
+        border-radius: 14px;
+        padding: 14px;
+        background: linear-gradient(135deg, var(--deep), var(--rose));
+        color: #fff;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 12px 28px rgba(141, 41, 73, 0.25);
+      }
+      .error {
+        height: 22px;
+        color: #b3264d;
+        font-size: 13px;
+        margin-top: 9px;
+      }
+      @keyframes heartbeat {
+        50% {
+          transform: scale(1.13);
+        }
+      }
+      #site {
+        display: none;
+      }
+      .site-ready #site {
+        display: block;
+      }
+      .site-ready #gate {
+        display: none;
+      }
+
+      /* NAV */
+      .topbar {
+        position: sticky;
+        top: 16px;
+        z-index: 100;
+        width: min(1120px, calc(100% - 28px));
+        margin: 16px auto 0;
+        padding: 12px 16px;
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.78);
+        box-shadow: 0 15px 45px var(--shadow);
+        backdrop-filter: blur(14px);
         display: flex;
-        flex-direction: column;
-        gap: 6px;
+        align-items: center;
+        gap: 14px;
       }
-      .name {
-        font-size: 20px;
-        font-weight: 700;
-        color: var(--accent);
+      .logo {
+        width: 48px;
+        height: 48px;
+        border-radius: 15px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, #f3a1b7, #b92e58);
+        color: #fff;
+        font-size: 24px;
       }
-      .subtitle {
-        font-size: 14px;
-        color: var(--muted);
+      .brand h1 {
+        font-family: "Playfair Display";
+        margin: 0;
+        color: var(--deep);
+        font-size: 17px;
+      }
+      .brand p {
+        margin: 2px 0 0;
+        color: #916c76;
+        font-size: 11px;
       }
       nav {
-        margin-top: 14px;
+        margin-left: auto;
+        display: flex;
+        gap: 5px;
       }
-      nav a {
-        margin-right: 12px;
-        text-decoration: none;
-        color: var(--accent);
+      .nav-btn {
+        border: 0;
+        background: transparent;
+        color: var(--deep);
+        padding: 10px 13px;
+        border-radius: 999px;
+        cursor: pointer;
         font-weight: 600;
       }
-      main {
-        margin-top: 18px;
+      .nav-btn:hover {
+        background: #fff0f4;
+      }
+      .hamb {
+        display: none;
+        margin-left: auto;
+        border: 0;
+        background: transparent;
+        font-size: 25px;
+        color: var(--deep);
+      }
+
+      /* HEARTS UNDER NAV */
+      .nav-hearts {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 100%;
+        height: 115px;
+        pointer-events: none;
+        overflow: hidden;
+      }
+      .nav-heart {
+        position: absolute;
+        top: -15px;
+        color: #d94b72;
+        opacity: 0.7;
+        animation: heartFall linear forwards;
+      }
+      @keyframes heartFall {
+        to {
+          transform: translateY(130px) rotate(35deg);
+          opacity: 0;
+        }
+      }
+
+      /* SIDE PETALS */
+      .petal-column {
+        position: fixed;
+        z-index: 40;
+        top: 0;
+        width: 190px;
+        height: 100vh;
+        pointer-events: none;
+        overflow: hidden;
+      }
+      .left-col {
+        left: 0;
+      }
+      .right-col {
+        right: 0;
+      }
+      .petal {
+        position: absolute;
+        top: -60px;
+        will-change: transform;
+        filter: drop-shadow(0 5px 5px rgba(100, 30, 50, 0.1));
+        animation: petalFall linear forwards;
+      }
+      @keyframes petalFall {
+        0% {
+          transform: translate3d(0, -70px, 0) rotate(0);
+          opacity: 0;
+        }
+        10% {
+          opacity: 0.9;
+        }
+        50% {
+          transform: translate3d(var(--drift), 55vh, 0) rotate(330deg);
+        }
+        100% {
+          transform: translate3d(calc(var(--drift) * -1), 112vh, 0)
+            rotate(720deg);
+          opacity: 0;
+        }
+      }
+
+      /* CONTENT */
+      .container {
+        width: min(1050px, calc(100% - 34px));
+        margin: auto;
+      }
+      section {
+        padding: 80px 0 20px;
       }
       .hero {
-        padding: 18px;
-        border-left: 4px solid var(--accent);
-        background: #f1f8ff;
-        border-radius: 8px;
+        min-height: 75vh;
+        display: grid;
+        grid-template-columns: 390px 1fr;
+        align-items: center;
+        gap: 55px;
       }
-      h1 {
-        margin: 6px 0;
-        font-size: 18px;
+      .photo-box {
+        height: 450px;
+        border-radius: 30px;
+        padding: 10px;
+        background: #fff;
+        box-shadow: 0 30px 80px var(--shadow);
+        transform: rotate(-2deg);
       }
-      .meta {
-        font-size: 13px;
-        color: var(--muted);
+      .photo-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 23px;
       }
-      article {
-        margin-top: 20px;
-        line-height: 1.6;
-        color: #111;
+      .eyebrow {
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: var(--rose);
+        font-size: 12px;
+        font-weight: 600;
       }
-      article h2 {
-        margin-top: 18px;
-        font-size: 16px;
-        color: var(--accent);
+      .hero h2 {
+        font-family: "Great Vibes";
+        font-size: 76px;
+        line-height: 0.9;
+        color: var(--deep);
+        margin: 12px 0 20px;
       }
-      .reflection {
-        background: #fff8f0;
-        padding: 12px;
-        border-radius: 8px;
-        margin-top: 12px;
-        border: 1px solid #fde3c6;
+      .hero p {
+        font-family: "Cormorant Garamond";
+        font-size: 25px;
+        line-height: 1.5;
+        max-width: 650px;
       }
-      footer {
+      .signature {
+        font-family: "Great Vibes";
+        font-size: 35px;
+        color: var(--rose);
+      }
+      .card {
+        background: rgba(255, 255, 255, 0.72);
+        border: 1px solid rgba(255, 255, 255, 0.85);
+        border-radius: 28px;
+        padding: 34px;
+        box-shadow: 0 25px 70px var(--shadow);
+        backdrop-filter: blur(8px);
+      }
+      .card h3 {
+        font-family: "Playfair Display";
+        font-size: 30px;
+        color: var(--deep);
+        margin-top: 0;
+      }
+      .story {
+        font-family: "Cormorant Garamond";
+        font-size: 23px;
+        line-height: 1.65;
+      }
+      .video-container {
         margin-top: 28px;
-        padding-top: 12px;
-        border-top: 1px dashed #eee;
-        color: var(--muted);
+        border-radius: 22px;
+        overflow: hidden;
+        background: #201318;
+        box-shadow: 0 20px 55px var(--shadow);
+        position: relative;
+      }
+      .video-container video {
+        display: block;
+        width: 100%;
+        max-height: 560px;
+        object-fit: cover;
+      }
+      .video-caption {
+        text-align: center;
+        padding: 12px 16px;
+        background: rgba(255, 255, 255, 0.75);
+        color: #80636b;
         font-size: 13px;
       }
-      @media (max-width: 600px) {
+      .photos-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+      }
+      .photo {
+        aspect-ratio: 1;
+        border-radius: 18px;
+        overflow: hidden;
+        cursor: pointer;
+        box-shadow: 0 12px 30px var(--shadow);
+        background: #eee;
+      }
+      .photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s;
+      }
+      .photo:hover img {
+        transform: scale(1.08);
+      }
+
+      /* ENVELOPE */
+      .envelope-wrap {
+        text-align: center;
+        padding: 40px 0 80px;
+      }
+      .envelope-wrap h3 {
+        font-family: "Great Vibes";
+        font-size: 52px;
+        color: var(--deep);
+        margin: 0 0 8px;
+      }
+      .envelope-wrap p {
+        color: #80636b;
+      }
+      .envelope {
+        width: min(780px, 94vw);
+        height: 480px;
+        margin: 38px auto 0;
+        position: relative;
+        cursor: pointer;
+        perspective: 1000px;
+        filter: drop-shadow(0 30px 35px rgba(83, 29, 45, 0.2));
+      }
+      .env-back {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(145deg, #eab0bf, #d87995);
+        border-radius: 8px;
+      }
+      .env-back:after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          135deg,
+          transparent 49.5%,
+          rgba(110, 35, 55, 0.16) 50%,
+          transparent 50.5%
+        );
+      }
+      .env-front {
+        position: absolute;
+        z-index: 3;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 52%;
+        background: linear-gradient(145deg, #e3a2b4, #c95b79);
+        clip-path: polygon(0 100%, 100% 100%, 50% 0);
+      }
+      .letter-paper {
+        position: absolute;
+        z-index: 2;
+        left: 7%;
+        width: 86%;
+        height: 500px;
+        bottom: 35px;
+        padding: 42px 48px;
+        text-align: left;
+        background: #f4e2b9;
+        background-image: radial-gradient(#fff3 1px, transparent 1px);
+        background-size: 5px 5px;
+        box-shadow: 0 8px 20px rgba(70, 40, 20, 0.2);
+        transform: translateY(15px);
+        transition: transform 1s cubic-bezier(0.2, 0.9, 0.25, 1);
+        overflow: hidden;
+      }
+      .letter-paper:before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        opacity: 0.22;
+        background: linear-gradient(90deg, transparent, #8e6845, transparent);
+        mix-blend-mode: multiply;
+      }
+      .letter-paper h4,
+      .letter-paper p,
+      .letter-paper .close-letter {
+        position: relative;
+      }
+      .letter-paper h4 {
+        font-family: "Great Vibes";
+        font-size: 45px;
+        color: #6d3b38;
+        margin: 0 0 8px;
+      }
+      .letter-paper p {
+        font-family: "Cormorant Garamond";
+        font-size: 25px;
+        line-height: 1.25;
+        margin: 7px 0;
+      }
+      .flap {
+        position: absolute;
+        z-index: 4;
+        inset: 0 0 auto 0;
+        height: 260px;
+        background: linear-gradient(155deg, #f0c0cb, #d56887);
+        clip-path: polygon(0 0, 100% 0, 50% 100%);
+        transform-origin: top;
+        transition: transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+      .seal {
+        position: absolute;
+        z-index: 5;
+        left: 50%;
+        top: 190px;
+        transform: translateX(-50%);
+        width: 58px;
+        height: 58px;
+        border-radius: 50%;
+        background: #a93056;
+        color: #ffdbe5;
+        display: grid;
+        place-items: center;
+        font-size: 25px;
+        box-shadow: 0 6px 15px #7e2744aa;
+        transition: opacity 0.4s;
+      }
+      .envelope.open .flap {
+        transform: rotateX(180deg);
+        z-index: 1;
+      }
+      .envelope.open .letter-paper {
+        transform: translateY(-310px);
+        z-index: 6;
+      }
+      .envelope.open .seal {
+        opacity: 0;
+      }
+      .close-letter {
+        display: none;
+        border: 0;
+        background: #8d2949;
+        color: #fff;
+        padding: 6px 12px;
+        border-radius: 99px;
+        cursor: pointer;
+        font-size: 11px;
+      }
+      .envelope.open .close-letter {
+        display: inline-block;
+      }
+
+      /* LIGHTBOX */
+      .lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 300;
+        background: #28151bcc;
+        display: none;
+        place-items: center;
+        padding: 25px;
+      }
+      .lightbox.show {
+        display: grid;
+      }
+      .lightbox img {
+        max-width: 94%;
+        max-height: 90%;
+        border-radius: 12px;
+        box-shadow: 0 25px 80px #0008;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 850px) {
+        nav {
+          display: none;
+        }
+        .hamb {
+          display: block;
+        }
+        .hero {
+          grid-template-columns: 1fr;
+          gap: 25px;
+          padding-top: 55px;
+        }
+        .photo-box {
+          height: 390px;
+        }
+        .hero h2 {
+          font-size: 61px;
+        }
+        .photos-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .petal-column {
+          width: 90px;
+        }
+        .nav-hearts {
+          height: 80px;
+        }
+      }
+      @media (max-width: 520px) {
         .container {
-          margin: 20px;
+          width: min(100% - 22px, 1050px);
+        }
+        .topbar {
+          top: 8px;
+          width: calc(100% - 16px);
+        }
+        section {
+          padding-top: 55px;
+        }
+        .photo-box {
+          height: 330px;
+        }
+        .hero p {
+          font-size: 21px;
+        }
+        .card {
+          padding: 23px;
+        }
+        .story {
+          font-size: 20px;
+        }
+        .envelope {
+          width: min(94vw, 620px);
+          height: 360px;
+        }
+        .letter-paper {
+          height: 300px;
+          padding: 30px 28px;
+        }
+        .letter-paper p {
+          font-size: 19px;
+        }
+        .letter-paper h4 {
+          font-size: 35px;
+        }
+        .flap {
+          height: 195px;
+        }
+        .seal {
+          top: 140px;
+        }
+        .envelope.open .letter-paper {
+          transform: translateY(-235px);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *:before,
+        *:after {
+          animation-duration: 0.01ms !important;
+          transition-duration: 0.01ms !important;
         }
       }
     </style>
   </head>
-  <body>
-    <div class="container">
-      <header>
-        <div class="name">
-          Eric John S. Solinap
-          <span style="font-weight: 400; color: var(--muted)">BSIT 3A</span>
+  <body class="locked">
+    <!-- CHANGE THIS ONE VALUE TO CHANGE THE PASSWORD. Format: YYYY-MM-DD -->
+    <div id="gate">
+      <div class="gate-card">
+        <div class="gate-heart">♥</div>
+        <h1>For My Love</h1>
+        <p>
+          This little corner of my heart is private.<br />Enter our special date
+          to open it.
+        </p>
+        <input
+          id="password"
+          class="date-input"
+          type="date"
+          aria-label="Our special date"
+        />
+        <button class="unlock" id="unlock">Open My Heart</button>
+        <div class="error" id="error"></div>
+      </div>
+    </div>
+
+    <div id="site">
+      <header class="topbar">
+        <div class="logo">S♥</div>
+        <div class="brand">
+          <h1>Saii, my love</h1>
+          <p>A small place of my heart</p>
         </div>
-        <div class="subtitle">E-portfolio — GEC09: Life of Rizal</div>
         <nav>
-          <a href="#overview">Overview</a>
-          <a href="#learnings">Key Learnings</a>
-          <a href="#reflection">Reflection</a>
-          <a href="#article">Article</a>
+          <button class="nav-btn" data-target="home">♡ Home</button>
+          <button class="nav-btn" data-target="letter">♡ My Letter</button>
+          <button class="nav-btn" data-target="memories">♡ Memories</button>
+          <button class="nav-btn" data-target="envelope">
+            ♡ Secret Letter
+          </button>
         </nav>
+        <button class="hamb" id="hamb">☰</button>
+        <div class="nav-hearts" id="navHearts"></div>
       </header>
 
-      <main>
-        <section id="overview" class="hero">
-          <h1>Course Overview</h1>
-          <p class="meta">
-            GEC09 (Life of Rizal) covers the biography, works, and legacy of Dr.
-            Jose Rizal — the national hero of the Philippines. This e-portfolio
-            summarizes what I learned in the subject and how it affected my view
-            as a student and citizen.
-          </p>
-        </section>
+      <div class="petal-column left-col" id="leftPetals"></div>
+      <div class="petal-column right-col" id="rightPetals"></div>
 
-        <section id="learnings">
-          <h2>Key Learnings</h2>
-          <article>
-            <ul>
-              <li>
-                <strong>Rizal's Early Life:</strong> I learned about his
-                upbringing in Calamba, Laguna — how family, education, and early
-                experiences shaped his character.
-              </li>
-              <li>
-                <strong>Education and Travels:</strong> Rizal's studies in
-                Ateneo and in Europe expanded his worldview; his travels exposed
-                him to liberal ideas and reforms.
-              </li>
-              <li>
-                <strong>Major Works:</strong> <em>Noli Me Tangere</em> and
-                <em>El Filibusterismo</em> are critiques of social injustice and
-                the abuses of the Spanish colonial system and the friars.
-              </li>
-              <li>
-                <strong>Nationalism and Reform:</strong> Rizal advocated
-                peaceful reform, education, and civic responsibility rather than
-                violent revolution.
-              </li>
-              <li>
-                <strong>Sacrifice and Legacy:</strong> His martyrdom in 1896
-                made him a symbol of Filipino nationalism and inspired later
-                movements for independence.
-              </li>
-            </ul>
-          </article>
-        </section>
-
-        <section id="reflection">
-          <h2>Personal Reflection</h2>
-          <div class="reflection">
+      <main class="container">
+        <section id="home" class="hero">
+          <div class="photo-box">
+            <img src="assets/images/saii.jpg" alt="A treasured photo" />
+          </div>
+          <div>
+            <div class="eyebrow">For Sayyed Maulana Solinap</div>
+            <h2>My Dearest Saii</h2>
             <p>
-              As a 3rd year BSIT student, one might think Rizal's life is
-              distant from technology and code. But what stood out to me was his
-              commitment to learning, discipline, and public service. Rizal's
-              curiosity, critical thinking, and capacity to write persuasive
-              arguments remind me that technical skills must be paired with
-              ethics and civic awareness. Understanding history helps me
-              appreciate the freedoms I enjoy and encourages me to use my skills
-              for community benefit.
+              Some feelings are too beautiful to leave unwritten. So I made you
+              a little place where every petal, every word, and every heartbeat
+              says the same thing: <b>I love you.</b>
             </p>
+            <div class="signature">Forever yours ♡</div>
           </div>
         </section>
 
-        <section id="article">
-          <h2>Article — What I Learned from GEC09: Life of Rizal</h2>
-          <article>
-            <p>
-              Life of Rizal was more than memorizing dates and events. The
-              course invited me to read Rizal not as an untouchable hero in a
-              textbook, but as a human being whose strengths and weaknesses
-              shaped a nation's story. Through his novels, I saw how writing can
-              expose injustice and move people toward reflection. The discipline
-              that Rizal showed in self-study and his passion for reform
-              inspired me to think about how I can apply the same dedication in
-              my studies.
-            </p>
+        <section id="letter">
+          <div class="card">
+            <div class="eyebrow">A letter from my heart</div>
+            <h3>My Dearest Saii,</h3>
+            <div class="story">
+              <p>
+                From the moment I first saw you, the ordinary became beautiful.
+                I carry the warmth of your smile through every day—in quiet
+                moments and in stormy ones.
+              </p>
+              <p>
+                Your laughter is my favorite melody. Your kindness teaches me
+                how to be better. When I picture home, it's your face I see:
+                calm, honest, and glowing with gentle strength.
+              </p>
+              <p>
+                This little website is only a tiny reflection of something much
+                bigger. I want to keep choosing you, listening to you, learning
+                you, and loving you with care.
+              </p>
+              <p>
+                Forever isn't a distant idea when it's you. I love you more than
+                words can dress up, but I will spend my life trying to show you.
+              </p>
+            </div>
+            <div class="signature" style="text-align: right">
+              — with all my heart
+            </div>
+          </div>
+        </section>
 
-            <p>
-              Rizal's belief in education as a tool for empowerment resonates
-              with me as a student. I realized that learning technical
-              skills—like programming or networking—is valuable only if I also
-              learn how to communicate, analyze problems ethically, and use
-              knowledge responsibly. Rizal's life taught me humility: he
-              questioned authorities with evidence and reason, and he stood by
-              his principles even when it cost him his life.
+        <section id="memories">
+          <div class="card">
+            <div class="eyebrow">Our little memories</div>
+            <h3>Moments I want to keep</h3>
+            <p style="color: #80636b">
+              This love site will be a witness to how our love story unfolds.
             </p>
+            <div class="photos-grid">
+              <div class="photo">
+                <img src="assets/images/saii2.jpg" alt="Memory 1" />
+              </div>
+              <div class="photo">
+                <img src="assets/images/saii3.jpg" alt="Memory 2" />
+              </div>
+              <div class="photo">
+                <img src="assets/images/saii4.jpg" alt="Memory 3" />
+              </div>
+              <div class="photo">
+                <img src="assets/images/saii5.jpg" alt="Memory 4" />
+              </div>
+            </div>
 
-            <p>
-              Finally, the story of Rizal reminded me of the power of small
-              actions. Rizal's essays, letters, and novels were not loud
-              revolutions, but carefully crafted ideas that spread and
-              influenced others. As I grow as a future IT professional, I aim to
-              follow his example by creating useful, ethical projects that
-              contribute to my community.
-            </p>
+            <!-- <div class="video-container">
+      <video autoplay muted loop playsinline preload="auto">
+        <source src="assets/videos/Recording 2025-09-05 104545.mp4" type="video/mp4">
+        Your browser does not support the video element.
+      </video>
+      <video autoplay muted loop playsinline preload="auto">
+        <source src="assets/videos/love-video.mp4" type="video/mp4">
+        Your browser does not support the video element.
+      </video>
+      <div class="video-caption">A little moving memory of us ♡</div>
+    </div> -->
+          </div>
+        </section>
 
-            <!-- <p style="margin-top: 12px"><em>— End of article</em></p> -->
-          </article>
+        <section id="envelope" class="envelope-wrap">
+          <h3>One more thing...</h3>
+          <p>There is a letter waiting inside. Click the envelope.</p>
+          <div
+            class="envelope"
+            id="envelopeBox"
+            aria-label="Open secret love letter"
+            role="button"
+            tabindex="0"
+          >
+            <div class="env-back"></div>
+            <div class="env-front"></div>
+            <div class="letter-paper">
+              <h4>My Love,</h4>
+              <p>
+                If I could put my heart into an envelope, this is what I would
+                give you.
+              </p>
+              <p>
+                You are one of the most beautiful parts of my life, and I hope
+                you always remember how deeply you are loved.
+              </p>
+              <p>
+                Thank you for every smile, every moment, and every little thing
+                that makes being with you feel special.
+              </p>
+              <p>
+                I choose you. Today, tomorrow, and in all the ordinary days
+                between.
+              </p>
+              <p
+                style="
+                  text-align: right;
+                  font-family: &quot;Great Vibes&quot;;
+                  font-size: 25px;
+                "
+              >
+                Yours, always ♡
+              </p>
+              <button class="close-letter" id="closeLetter">
+                Close letter
+              </button>
+            </div>
+            <div class="flap"></div>
+            <div class="seal">♥</div>
+          </div>
         </section>
       </main>
-
-      <footer>
-        Created by Eric John S. Solinap — BSIT 3A
-        <!-- the file itself shows this -->
+      <footer
+        style="text-align: center; padding: 15px 20px 45px; color: #916c76"
+      >
+        Made with love, for you. ♡
       </footer>
     </div>
+
+    <div class="lightbox" id="lightbox">
+      <img id="lightImg" alt="Enlarged memory" />
+    </div>
+
+    <script>
+      /* =========================================================
+   EASY SETTINGS — CHANGE THESE VALUES
+   ========================================================= */
+      const LOVE_PASSWORD = "2026-08-09"; // <-- CHANGE THE DATE HERE
+      const PETAL_COUNT_PER_SIDE = 32; // More petals = higher number
+      const PETAL_RESPAWN_MS = 700; // Smaller = more frequent new petals
+
+      /* PASSWORD */
+      const gate = document.getElementById("gate");
+      const site = document.getElementById("site");
+      const pass = document.getElementById("password");
+      const error = document.getElementById("error");
+
+      function unlock() {
+        if (pass.value === LOVE_PASSWORD) {
+          document.body.classList.remove("locked");
+          document.body.classList.add("site-ready");
+          sessionStorage.setItem("loveUnlocked", "yes");
+        } else {
+          error.textContent =
+            "That date isn't the key to my heart. Try again ♡";
+          pass.animate(
+            [
+              { transform: "translateX(-7px)" },
+              { transform: "translateX(7px)" },
+              { transform: "translateX(0)" },
+            ],
+            { duration: 240 },
+          );
+        }
+      }
+      document.getElementById("unlock").onclick = unlock;
+      pass.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") unlock();
+      });
+      if (sessionStorage.getItem("loveUnlocked") === "yes") {
+        document.body.classList.remove("locked");
+        document.body.classList.add("site-ready");
+      }
+
+      /* NAV */
+      function scrollToTarget(id) {
+        document
+          .getElementById(id)
+          ?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+      document
+        .querySelectorAll("[data-target]")
+        .forEach((b) => (b.onclick = () => scrollToTarget(b.dataset.target)));
+      document.getElementById("hamb").onclick = () => {
+        const nav = document.querySelector("nav");
+        const visible = nav.style.display === "flex";
+        nav.style.cssText = visible
+          ? ""
+          : "display:flex;position:absolute;top:74px;right:8px;flex-direction:column;background:#fff;padding:10px;border-radius:18px;box-shadow:0 20px 50px #55203322";
+      };
+
+      /* PETALS — lots of petals, only on the sides */
+      const petalSymbols = ["🌸", "🌺", "🌷", "🌹", "💮"];
+      function spawnPetal(col, side) {
+        const p = document.createElement("span");
+        p.className = "petal";
+        p.textContent =
+          petalSymbols[Math.floor(Math.random() * petalSymbols.length)];
+        p.style.left = Math.random() * 85 + "%";
+        p.style.fontSize = 13 + Math.random() * 25 + "px";
+        p.style.setProperty(
+          "--drift",
+          (side === "left" ? 1 : -1) * (20 + Math.random() * 100) + "px",
+        );
+        p.style.animationDuration = 5 + Math.random() * 8 + "s";
+        p.style.animationDelay = -Math.random() * 9 + "s";
+        col.appendChild(p);
+        setTimeout(() => p.remove(), 16000);
+      }
+      const left = document.getElementById("leftPetals"),
+        right = document.getElementById("rightPetals");
+      for (let i = 0; i < PETAL_COUNT_PER_SIDE; i++) {
+        spawnPetal(left, "left");
+        spawnPetal(right, "right");
+      }
+      setInterval(() => {
+        spawnPetal(left, "left");
+        spawnPetal(right, "right");
+      }, PETAL_RESPAWN_MS);
+
+      /* HEARTS FALLING UNDER NAV */
+      const hearts = document.getElementById("navHearts");
+      setInterval(() => {
+        const h = document.createElement("span");
+        h.className = "nav-heart";
+        h.textContent = "♥";
+        h.style.left = Math.random() * 100 + "%";
+        h.style.fontSize = 9 + Math.random() * 13 + "px";
+        h.style.animationDuration = 2.5 + Math.random() * 2.5 + "s";
+        hearts.appendChild(h);
+        setTimeout(() => h.remove(), 6000);
+      }, 350);
+
+      /* ENVELOPE */
+      const env = document.getElementById("envelopeBox");
+      env.onclick = (e) => {
+        if (e.target.id !== "closeLetter") env.classList.add("open");
+      };
+      env.onkeydown = (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          env.classList.add("open");
+        }
+      };
+      document.getElementById("closeLetter").onclick = (e) => {
+        e.stopPropagation();
+        env.classList.remove("open");
+      };
+
+      /* PHOTO LIGHTBOX */
+      const lb = document.getElementById("lightbox"),
+        li = document.getElementById("lightImg");
+      document.querySelectorAll(".photo").forEach(
+        (card) =>
+          (card.onclick = () => {
+            li.src = card.querySelector("img").src;
+            lb.classList.add("show");
+          }),
+      );
+      lb.onclick = () => lb.classList.remove("show");
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          lb.classList.remove("show");
+          env.classList.remove("open");
+        }
+      });
+    </script>
   </body>
 </html>
