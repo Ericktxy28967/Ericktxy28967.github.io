@@ -1,942 +1,1054 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>For My Saii — A Love Letter</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Love Letter — Lovely Buenafe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Great+Vibes&family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Great+Vibes&family=Montserrat:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
+
     <style>
       :root {
-        --rose: #d94b72;
-        --deep: #8d2949;
-        --cream: #fffaf2;
-        --paper: #f2dfb8;
-        --ink: #4b3027;
-        --gold: #b78643;
-        --shadow: rgba(80, 34, 42, 0.18);
+        --blue: #1769aa;
+        --blue2: #4f9edb;
+        --sky: #9ed8f5;
+        --pale: #edf9ff;
+        --paper: #fffdf6;
+        --ink: #334e68;
+        --shadow: rgba(23, 105, 170, 0.2);
       }
       * {
         box-sizing: border-box;
       }
-      html {
-        scroll-behavior: smooth;
-      }
+      html,
       body {
         margin: 0;
-        color: var(--ink);
-        font-family: Poppins, sans-serif;
-        background:
-          radial-gradient(circle at 20% 10%, #fff 0 10%, transparent 30%),
-          linear-gradient(135deg, #fff8fb, #fbeaf0 50%, #fff7ee);
-        overflow-x: hidden;
+        min-height: 100%;
+        font-family: Montserrat, Arial, sans-serif;
       }
-      button {
+      body {
+        overflow-x: hidden;
+        color: var(--ink);
+        background: linear-gradient(180deg, #f6fcff, #dff3ff);
+      }
+      button,
+      input {
         font: inherit;
       }
-      body.locked {
-        overflow: hidden;
-      }
 
-      /* PASSWORD GATE */
+      /* ================= LOCK SCREEN ================= */
       #gate {
         position: fixed;
         inset: 0;
         z-index: 1000;
         display: grid;
         place-items: center;
-        padding: 22px;
-        background: radial-gradient(
-          circle at 50% 20%,
-          #fff5f8,
-          #eab1c1 55%,
-          #8d2949
-        );
+        overflow: hidden;
+        padding: 20px;
+        background:
+          radial-gradient(
+            circle at 50% 15%,
+            rgba(255, 255, 255, 0.95),
+            transparent 34%
+          ),
+          linear-gradient(180deg, #f6fcff 0%, #e2f4ff 100%);
       }
       .gate-card {
-        width: min(520px, 100%);
-        padding: 48px 34px;
+        position: relative;
+        z-index: 20;
+        width: min(100%, 540px);
+        max-height: 94vh;
+        overflow: auto;
+        padding: clamp(22px, 5vw, 42px);
         text-align: center;
-        border: 1px solid rgba(255, 255, 255, 0.55);
+        border: 1px solid rgba(79, 158, 219, 0.25);
         border-radius: 28px;
-        background: rgba(255, 250, 244, 0.92);
-        box-shadow: 0 35px 100px rgba(70, 16, 35, 0.35);
-        backdrop-filter: blur(12px);
+        background: rgba(255, 255, 255, 0.91);
+        box-shadow: 0 30px 80px rgba(23, 105, 170, 0.2);
+        backdrop-filter: blur(14px);
       }
-      .gate-heart {
-        font-size: 58px;
-        animation: heartbeat 1.5s infinite;
+      .gate-title {
+        margin: 0;
+        color: var(--blue);
+        font:
+          clamp(40px, 8vw, 62px)/1 "Great Vibes",
+          cursive;
       }
-      .gate-card h1 {
-        font-family: "Great Vibes";
-        font-size: 54px;
-        color: var(--deep);
-        margin: 8px 0;
+      .gate-subtitle {
+        margin: 8px 0 18px;
+        color: #5b7890;
+        font-size: 13px;
+        line-height: 1.6;
       }
-      .gate-card p {
-        color: #76555b;
+      .field-label {
+        display: block;
+        margin: 12px 0 6px;
+        color: var(--blue);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-align: left;
+        text-transform: uppercase;
       }
-      .date-input {
+      .date-input,
+      .word-input {
         width: 100%;
-        padding: 15px 18px;
-        border: 1px solid #e0b5c1;
+        border: 1px solid #a8d4ec;
         border-radius: 14px;
+        outline: 0;
         background: #fff;
-        font-size: 17px;
-        outline: none;
+        color: #29475d;
+        padding: 14px 16px;
         text-align: center;
+        transition: 0.2s;
       }
-      .date-input:focus {
-        box-shadow: 0 0 0 4px #f7dce5;
+      .date-input:focus,
+      .word-input:focus {
+        border-color: var(--blue2);
+        box-shadow: 0 0 0 4px rgba(79, 158, 219, 0.14);
       }
       .unlock {
-        margin-top: 14px;
         width: 100%;
+        margin-top: 17px;
+        padding: 14px 18px;
         border: 0;
         border-radius: 14px;
-        padding: 14px;
-        background: linear-gradient(135deg, var(--deep), var(--rose));
-        color: #fff;
-        font-weight: 600;
+        color: white;
+        background: linear-gradient(135deg, #4f9edb, #1769aa);
+        box-shadow: 0 10px 24px rgba(23, 105, 170, 0.23);
+        font-weight: 700;
         cursor: pointer;
-        box-shadow: 0 12px 28px rgba(141, 41, 73, 0.25);
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+      }
+      .unlock:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 14px 30px rgba(23, 105, 170, 0.28);
       }
       .error {
-        height: 22px;
-        color: #b3264d;
-        font-size: 13px;
+        min-height: 22px;
         margin-top: 9px;
+        color: #c44a63;
+        font-size: 12px;
       }
-      @keyframes heartbeat {
-        50% {
-          transform: scale(1.13);
+
+      /* Falling blue petals and hearts */
+      .side-particles {
+        position: absolute;
+        inset: 0;
+        z-index: 5;
+        pointer-events: none;
+        overflow: hidden;
+      }
+      .petal {
+        position: absolute;
+        top: -40px;
+        width: 13px;
+        height: 20px;
+        border-radius: 100% 0 100% 0;
+        background: linear-gradient(135deg, #a9ddf8, #2e83bd);
+        box-shadow: 0 3px 9px rgba(23, 105, 170, 0.17);
+        animation: fall linear forwards;
+      }
+      @keyframes fall {
+        0% {
+          transform: translate3d(0, -50px, 0) rotate(0deg);
+          opacity: 0;
+        }
+        8% {
+          opacity: 0.9;
+        }
+        100% {
+          transform: translate3d(var(--drift), 110vh, 0) rotate(500deg);
+          opacity: 0;
         }
       }
+      .nav-hearts {
+        position: absolute;
+        inset: 0;
+        z-index: 6;
+        pointer-events: none;
+        overflow: hidden;
+      }
+      .falling-heart {
+        position: absolute;
+        top: -30px;
+        color: #4f9edb;
+        text-shadow: 0 4px 10px rgba(23, 105, 170, 0.15);
+        animation: heartFall linear forwards;
+      }
+      @keyframes heartFall {
+        to {
+          transform: translateY(110vh) rotate(18deg);
+          opacity: 0;
+        }
+      }
+
+      /* Huge bouquet */
+      .bouquet {
+        position: relative;
+        width: min(100%, 400px);
+        height: 220px;
+        margin: 0 auto 3px;
+        pointer-events: none;
+        filter: drop-shadow(0 12px 16px rgba(23, 105, 170, 0.12));
+      }
+      .b-stem {
+        position: absolute;
+        left: 50%;
+        bottom: 28px;
+        width: 5px;
+        height: 145px;
+        border-radius: 99px;
+        transform-origin: bottom;
+        background: linear-gradient(#61a97c, #317452);
+      }
+      .s1 {
+        transform: translateX(-50%) rotate(-30deg);
+      }
+      .s2 {
+        transform: translateX(-50%) rotate(-16deg);
+        height: 165px;
+      }
+      .s3 {
+        transform: translateX(-50%);
+        height: 180px;
+      }
+      .s4 {
+        transform: translateX(-50%) rotate(16deg);
+        height: 165px;
+      }
+      .s5 {
+        transform: translateX(-50%) rotate(30deg);
+      }
+      .leaf {
+        position: absolute;
+        width: 44px;
+        height: 19px;
+        border-radius: 100% 0 100% 0;
+        background: linear-gradient(135deg, #91d0a8, #388261);
+      }
+      .l1 {
+        left: 76px;
+        bottom: 66px;
+        transform: rotate(205deg);
+      }
+      .l2 {
+        left: 105px;
+        bottom: 95px;
+        transform: rotate(25deg);
+      }
+      .l3 {
+        left: 150px;
+        bottom: 75px;
+        transform: rotate(205deg);
+      }
+      .l4 {
+        right: 100px;
+        bottom: 92px;
+        transform: rotate(155deg);
+      }
+      .l5 {
+        right: 70px;
+        bottom: 64px;
+        transform: rotate(25deg);
+      }
+      .flower {
+        position: absolute;
+        width: 68px;
+        height: 68px;
+      }
+      .flower.small {
+        transform: scale(0.72);
+      }
+      .flower .fp {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 31px;
+        height: 43px;
+        margin: -22px 0 0 -15px;
+        border-radius: 60% 60% 48% 48%;
+        background: linear-gradient(145deg, #effaff, #92d2f4 55%, #3c91c5);
+        transform-origin: 50% 100%;
+      }
+      .fp1 {
+        transform: rotate(0) translateY(-14px);
+      }
+      .fp2 {
+        transform: rotate(72deg) translateY(-14px);
+      }
+      .fp3 {
+        transform: rotate(144deg) translateY(-14px);
+      }
+      .fp4 {
+        transform: rotate(216deg) translateY(-14px);
+      }
+      .fp5 {
+        transform: rotate(288deg) translateY(-14px);
+      }
+      .flower .fc {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 23px;
+        height: 23px;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        background: radial-gradient(
+          circle at 35% 30%,
+          #fff,
+          #bfe9ff 45%,
+          #4b9dce
+        );
+      }
+      .f1 {
+        left: 4px;
+        top: 83px;
+        transform: rotate(-10deg);
+      }
+      .f2 {
+        left: 62px;
+        top: 45px;
+        transform: rotate(-8deg);
+      }
+      .f3 {
+        left: 143px;
+        top: 12px;
+        transform: scale(1.1);
+      }
+      .f4 {
+        right: 62px;
+        top: 45px;
+        transform: rotate(8deg);
+      }
+      .f5 {
+        right: 4px;
+        top: 83px;
+        transform: rotate(10deg);
+      }
+      .f6 {
+        left: 102px;
+        top: 98px;
+      }
+      .f7 {
+        right: 102px;
+        top: 98px;
+      }
+      .wrap {
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        width: 115px;
+        height: 70px;
+        transform: translateX(-50%);
+        background: linear-gradient(145deg, #e5f6ff, #83bee0);
+        clip-path: polygon(10% 0, 90% 0, 100% 100%, 0 100%);
+        border-radius: 8px 8px 18px 18px;
+      }
+      .ribbon {
+        position: absolute;
+        left: 50%;
+        bottom: 39px;
+        width: 74px;
+        height: 24px;
+        transform: translateX(-50%);
+        z-index: 8;
+      }
+      .ribbon:before,
+      .ribbon:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        width: 40px;
+        height: 25px;
+        background: #72b8e2;
+        border: 2px solid rgba(255, 255, 255, 0.6);
+      }
+      .ribbon:before {
+        right: 34px;
+        transform: skewY(17deg) rotate(10deg);
+        border-radius: 5px 16px 5px 16px;
+      }
+      .ribbon:after {
+        left: 34px;
+        transform: skewY(-17deg) rotate(-10deg);
+        border-radius: 16px 5px 16px 5px;
+      }
+      .ribbon span {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        width: 22px;
+        height: 22px;
+        transform: translateX(-50%);
+        border-radius: 50%;
+        background: #e7f8ff;
+      }
+
+      /* ================= UNLOCKED LOVE LETTER ================= */
       #site {
+        display: none;
+      }
+      .site-ready #gate {
         display: none;
       }
       .site-ready #site {
         display: block;
       }
-      .site-ready #gate {
-        display: none;
-      }
-
-      /* NAV */
-      .topbar {
-        position: sticky;
-        top: 16px;
-        z-index: 100;
-        width: min(1120px, calc(100% - 28px));
-        margin: 16px auto 0;
-        padding: 12px 16px;
-        border: 1px solid rgba(255, 255, 255, 0.8);
-        border-radius: 20px;
-        background: rgba(255, 255, 255, 0.78);
-        box-shadow: 0 15px 45px var(--shadow);
-        backdrop-filter: blur(14px);
+      .letter-page {
+        min-height: 100vh;
+        position: relative;
+        isolation: isolate;
         display: flex;
+        flex-direction: column;
         align-items: center;
-        gap: 14px;
+        justify-content: center;
+        overflow-x: clip;
+        padding: clamp(28px, 6vw, 65px) 16px 55px;
+        text-align: center;
+        background:
+          radial-gradient(
+            circle at 50% 10%,
+            rgba(255, 255, 255, 0.9),
+            transparent 34%
+          ),
+          linear-gradient(180deg, #f6fcff, #e0f3ff);
       }
-      .logo {
-        width: 48px;
-        height: 48px;
-        border-radius: 15px;
-        display: grid;
-        place-items: center;
-        background: linear-gradient(135deg, #f3a1b7, #b92e58);
-        color: #fff;
-        font-size: 24px;
-      }
-      .brand h1 {
-        font-family: "Playfair Display";
-        margin: 0;
-        color: var(--deep);
-        font-size: 17px;
-      }
-      .brand p {
-        margin: 2px 0 0;
-        color: #916c76;
-        font-size: 11px;
-      }
-      nav {
-        margin-left: auto;
-        display: flex;
-        gap: 5px;
-      }
-      .nav-btn {
-        border: 0;
-        background: transparent;
-        color: var(--deep);
-        padding: 10px 13px;
-        border-radius: 999px;
-        cursor: pointer;
-        font-weight: 600;
-      }
-      .nav-btn:hover {
-        background: #fff0f4;
-      }
-      .hamb {
-        display: none;
-        margin-left: auto;
-        border: 0;
-        background: transparent;
-        font-size: 25px;
-        color: var(--deep);
-      }
-
-      /* HEARTS UNDER NAV */
-      .nav-hearts {
+      .letter-particles {
         position: absolute;
-        left: 0;
-        right: 0;
-        top: 100%;
-        height: 115px;
-        pointer-events: none;
+        inset: 0;
+        z-index: 0;
         overflow: hidden;
-      }
-      .nav-heart {
-        position: absolute;
-        top: -15px;
-        color: #d94b72;
-        opacity: 0.7;
-        animation: heartFall linear forwards;
-      }
-      @keyframes heartFall {
-        to {
-          transform: translateY(130px) rotate(35deg);
-          opacity: 0;
-        }
-      }
-
-      /* SIDE PETALS */
-      .petal-column {
-        position: fixed;
-        z-index: 40;
-        top: 0;
-        width: 190px;
-        height: 100vh;
         pointer-events: none;
-        overflow: hidden;
       }
-      .left-col {
-        left: 0;
+      .letter-page > :not(.letter-particles) {
+        position: relative;
+        z-index: 1;
       }
-      .right-col {
-        right: 0;
-      }
-      .petal {
+      .falling-garden-item {
         position: absolute;
-        top: -60px;
-        will-change: transform;
-        filter: drop-shadow(0 5px 5px rgba(100, 30, 50, 0.1));
-        animation: petalFall linear forwards;
+        top: -36px;
+        left: var(--start-x);
+        opacity: 0;
+        animation: garden-fall var(--fall-duration) linear forwards;
       }
-      @keyframes petalFall {
-        0% {
-          transform: translate3d(0, -70px, 0) rotate(0);
-          opacity: 0;
-        }
-        10% {
-          opacity: 0.9;
-        }
-        50% {
-          transform: translate3d(var(--drift), 55vh, 0) rotate(330deg);
+      .falling-garden-petal {
+        width: 12px;
+        height: 18px;
+        border-radius: 100% 0 100% 0;
+        background: linear-gradient(135deg, #c4eaf9, #4f9edb);
+        box-shadow: 0 3px 9px rgba(23, 105, 170, 0.18);
+      }
+      .falling-garden-flower {
+        color: #4f9edb;
+        font-size: var(--flower-size);
+        line-height: 1;
+        text-shadow: 0 3px 8px rgba(23, 105, 170, 0.18);
+      }
+      @keyframes garden-fall {
+        8% {
+          opacity: 0.85;
         }
         100% {
-          transform: translate3d(calc(var(--drift) * -1), 112vh, 0)
-            rotate(720deg);
+          transform: translate3d(var(--drift), 110vh, 0) rotate(520deg);
           opacity: 0;
         }
       }
-
-      /* CONTENT */
-      .container {
-        width: min(1050px, calc(100% - 34px));
-        margin: auto;
+      .love-title {
+        margin: 0;
+        color: var(--blue);
+        font:
+          clamp(50px, 8vw, 80px)/1 "Great Vibes",
+          cursive;
       }
-      section {
-        padding: 80px 0 20px;
+      .love-subtitle {
+        margin: 9px 0 0;
+        color: #5c788c;
+        font-size: clamp(13px, 2vw, 16px);
       }
-      .hero {
-        min-height: 75vh;
-        display: grid;
-        grid-template-columns: 390px 1fr;
-        align-items: center;
-        gap: 55px;
+      .recipient {
+        color: var(--blue);
+        font-weight: 700;
       }
-      .photo-box {
-        height: 450px;
-        border-radius: 30px;
-        padding: 10px;
-        background: #fff;
-        box-shadow: 0 30px 80px var(--shadow);
-        transform: rotate(-2deg);
+      .envelope-stage {
+        width: min(100%, 760px);
+        margin: clamp(28px, 6vw, 52px) auto 0;
       }
-      .photo-box img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 23px;
-      }
-      .eyebrow {
-        letter-spacing: 4px;
-        text-transform: uppercase;
-        color: var(--rose);
+      .letter-label {
+        display: inline-flex;
+        margin-bottom: 18px;
+        padding: 9px 17px;
+        border-radius: 999px;
+        color: var(--blue);
         font-size: 12px;
-        font-weight: 600;
-      }
-      .hero h2 {
-        font-family: "Great Vibes";
-        font-size: 76px;
-        line-height: 0.9;
-        color: var(--deep);
-        margin: 12px 0 20px;
-      }
-      .hero p {
-        font-family: "Cormorant Garamond";
-        font-size: 25px;
-        line-height: 1.5;
-        max-width: 650px;
-      }
-      .signature {
-        font-family: "Great Vibes";
-        font-size: 35px;
-        color: var(--rose);
-      }
-      .card {
-        background: rgba(255, 255, 255, 0.72);
-        border: 1px solid rgba(255, 255, 255, 0.85);
-        border-radius: 28px;
-        padding: 34px;
-        box-shadow: 0 25px 70px var(--shadow);
-        backdrop-filter: blur(8px);
-      }
-      .card h3 {
-        font-family: "Playfair Display";
-        font-size: 30px;
-        color: var(--deep);
-        margin-top: 0;
-      }
-      .story {
-        font-family: "Cormorant Garamond";
-        font-size: 23px;
-        line-height: 1.65;
-      }
-      .video-container {
-        margin-top: 28px;
-        border-radius: 22px;
-        overflow: hidden;
-        background: #201318;
-        box-shadow: 0 20px 55px var(--shadow);
-        position: relative;
-      }
-      .video-container video {
-        display: block;
-        width: 100%;
-        max-height: 560px;
-        object-fit: cover;
-      }
-      .video-caption {
-        text-align: center;
-        padding: 12px 16px;
-        background: rgba(255, 255, 255, 0.75);
-        color: #80636b;
-        font-size: 13px;
-      }
-      .photos-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 15px;
-      }
-      .photo {
-        aspect-ratio: 1;
-        border-radius: 18px;
-        overflow: hidden;
-        cursor: pointer;
-        box-shadow: 0 12px 30px var(--shadow);
-        background: #eee;
-      }
-      .photo img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.5s;
-      }
-      .photo:hover img {
-        transform: scale(1.08);
-      }
-
-      /* ENVELOPE */
-      .envelope-wrap {
-        text-align: center;
-        padding: 40px 0 80px;
-      }
-      .envelope-wrap h3 {
-        font-family: "Great Vibes";
-        font-size: 52px;
-        color: var(--deep);
-        margin: 0 0 8px;
-      }
-      .envelope-wrap p {
-        color: #80636b;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
       }
       .envelope {
-        width: min(780px, 94vw);
-        height: 480px;
-        margin: 38px auto 0;
         position: relative;
+        width: min(100%, 680px);
+        aspect-ratio: 1.62/1;
+        margin: auto;
         cursor: pointer;
-        perspective: 1000px;
-        filter: drop-shadow(0 30px 35px rgba(83, 29, 45, 0.2));
+        perspective: 1200px;
+        outline: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .envelope:focus-visible {
+        box-shadow: 0 0 0 4px rgba(79, 158, 219, 0.25);
+        border-radius: 20px;
       }
       .env-back {
         position: absolute;
         inset: 0;
-        background: linear-gradient(145deg, #eab0bf, #d87995);
-        border-radius: 8px;
+        z-index: 1;
+        border-radius: 18px;
+        background: linear-gradient(145deg, #d9f1fc, #8fc8e8);
+        border: 2px solid rgba(65, 137, 182, 0.3);
+        box-shadow: 0 28px 60px var(--shadow);
       }
       .env-back:after {
         content: "";
         position: absolute;
-        inset: 0;
-        background: linear-gradient(
-          135deg,
-          transparent 49.5%,
-          rgba(110, 35, 55, 0.16) 50%,
-          transparent 50.5%
-        );
-      }
-      .env-front {
-        position: absolute;
-        z-index: 3;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        height: 52%;
-        background: linear-gradient(145deg, #e3a2b4, #c95b79);
-        clip-path: polygon(0 100%, 100% 100%, 50% 0);
+        inset: 11px;
+        border: 1px solid rgba(255, 255, 255, 0.58);
+        border-radius: 12px;
       }
       .letter-paper {
         position: absolute;
-        z-index: 2;
-        left: 7%;
-        width: 86%;
-        height: 500px;
-        bottom: 35px;
-        padding: 42px 48px;
+        left: 50%;
+        bottom: 8%;
+        width: 75%;
+        height: 80%;
+        z-index: 3;
+        padding: clamp(20px, 4vw, 36px);
+        overflow: auto;
         text-align: left;
-        background: #f4e2b9;
-        background-image: radial-gradient(#fff3 1px, transparent 1px);
-        background-size: 5px 5px;
-        box-shadow: 0 8px 20px rgba(70, 40, 20, 0.2);
-        transform: translateY(15px);
-        transition: transform 1s cubic-bezier(0.2, 0.9, 0.25, 1);
-        overflow: hidden;
+        color: #334e68;
+        background:
+          linear-gradient(rgba(255, 253, 246, 0.96), rgba(255, 253, 246, 0.96)),
+          repeating-linear-gradient(
+            0deg,
+            transparent 0,
+            transparent 31px,
+            rgba(79, 158, 219, 0.12) 32px
+          );
+        border: 1px solid #c8dfeb;
+        border-radius: 5px;
+        box-shadow: 0 7px 24px rgba(23, 105, 170, 0.13);
+        transform: translate(-50%, 0);
+        transition:
+          transform 1s cubic-bezier(0.16, 0.86, 0.25, 1),
+          box-shadow 0.6s;
       }
       .letter-paper:before {
         content: "";
         position: absolute;
-        inset: 0;
-        opacity: 0.22;
-        background: linear-gradient(90deg, transparent, #8e6845, transparent);
-        mix-blend-mode: multiply;
+        inset: 8px;
+        border: 1px solid rgba(79, 158, 219, 0.18);
+        pointer-events: none;
       }
-      .letter-paper h4,
-      .letter-paper p,
-      .letter-paper .close-letter {
+      .letter-paper h2 {
         position: relative;
-      }
-      .letter-paper h4 {
-        font-family: "Great Vibes";
-        font-size: 45px;
-        color: #6d3b38;
-        margin: 0 0 8px;
+        margin: 0 0 15px;
+        color: var(--blue);
+        font:
+          clamp(32px, 5vw, 50px)/1 "Great Vibes",
+          cursive;
+        font-weight: 400;
       }
       .letter-paper p {
-        font-family: "Cormorant Garamond";
-        font-size: 25px;
-        line-height: 1.25;
-        margin: 7px 0;
+        position: relative;
+        margin: 0 0 12px;
+        font:
+          clamp(15px, 2.1vw, 20px)/1.55 "Cormorant Garamond",
+          Georgia,
+          serif;
+      }
+      .signature {
+        text-align: right;
+        color: var(--blue);
+        font:
+          clamp(26px, 4vw, 36px) "Great Vibes",
+          cursive !important;
       }
       .flap {
         position: absolute;
-        z-index: 4;
-        inset: 0 0 auto 0;
-        height: 260px;
-        background: linear-gradient(155deg, #f0c0cb, #d56887);
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 63%;
+        z-index: 7;
+        transform-origin: 50% 0;
+        transform: rotateX(0deg);
+        transition: transform 0.85s cubic-bezier(0.2, 0.75, 0.25, 1);
+        background: linear-gradient(145deg, #e9f8ff, #9dcee8);
         clip-path: polygon(0 0, 100% 0, 50% 100%);
-        transform-origin: top;
-        transition: transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+      .env-front {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 64%;
+        z-index: 5;
+        border-radius: 0 0 18px 18px;
+        background: linear-gradient(160deg, #bde4f8, #76b7da);
+        clip-path: polygon(0 0, 50% 63%, 100% 0, 100% 100%, 0 100%);
       }
       .seal {
         position: absolute;
-        z-index: 5;
+        z-index: 10;
         left: 50%;
-        top: 190px;
-        transform: translateX(-50%);
-        width: 58px;
-        height: 58px;
-        border-radius: 50%;
-        background: #a93056;
-        color: #ffdbe5;
+        top: 51%;
+        width: 60px;
+        height: 60px;
         display: grid;
         place-items: center;
-        font-size: 25px;
-        box-shadow: 0 6px 15px #7e2744aa;
-        transition: opacity 0.4s;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        color: #fff;
+        font-size: 27px;
+        background: radial-gradient(circle at 35% 30%, #83c9ef, #277db8);
+        border: 4px solid rgba(255, 255, 255, 0.72);
+        box-shadow: 0 8px 20px rgba(23, 105, 170, 0.28);
+        transition: 0.4s;
       }
       .envelope.open .flap {
-        transform: rotateX(180deg);
-        z-index: 1;
+        transform: rotateX(178deg);
+        z-index: 2;
       }
       .envelope.open .letter-paper {
-        transform: translateY(-310px);
-        z-index: 6;
+        transform: translate(-50%, -40%);
+        z-index: 8;
+        box-shadow: 0 25px 50px rgba(23, 105, 170, 0.25);
       }
       .envelope.open .seal {
         opacity: 0;
+        transform: translate(-50%, -50%) scale(0.6);
       }
-      .close-letter {
-        display: none;
-        border: 0;
-        background: #8d2949;
-        color: #fff;
-        padding: 6px 12px;
-        border-radius: 99px;
-        cursor: pointer;
-        font-size: 11px;
+      .envelope-hint {
+        margin: 17px 0 0;
+        color: #5c788c;
+        font-size: 13px;
       }
-      .envelope.open .close-letter {
-        display: inline-block;
+      .letter-footer {
+        margin-top: 35px;
+        color: #7390a2;
+        font-size: 12px;
       }
 
-      /* LIGHTBOX */
-      .lightbox {
-        position: fixed;
-        inset: 0;
-        z-index: 300;
-        background: #28151bcc;
-        display: none;
-        place-items: center;
-        padding: 25px;
-      }
-      .lightbox.show {
-        display: grid;
-      }
-      .lightbox img {
-        max-width: 94%;
-        max-height: 90%;
-        border-radius: 12px;
-        box-shadow: 0 25px 80px #0008;
-      }
-
-      /* RESPONSIVE */
-      @media (max-width: 850px) {
-        nav {
-          display: none;
+      /* mobile */
+      @media (max-width: 650px) {
+        .gate-card {
+          padding: 20px;
         }
-        .hamb {
-          display: block;
+        .bouquet {
+          height: 190px;
+          transform: scale(0.9);
+          transform-origin: top center;
+          margin-bottom: -18px;
         }
-        .hero {
-          grid-template-columns: 1fr;
-          gap: 25px;
-          padding-top: 55px;
-        }
-        .photo-box {
-          height: 390px;
-        }
-        .hero h2 {
-          font-size: 61px;
-        }
-        .photos-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-        .petal-column {
-          width: 90px;
-        }
-        .nav-hearts {
-          height: 80px;
-        }
-      }
-      @media (max-width: 520px) {
-        .container {
-          width: min(100% - 22px, 1050px);
-        }
-        .topbar {
-          top: 8px;
-          width: calc(100% - 16px);
-        }
-        section {
-          padding-top: 55px;
-        }
-        .photo-box {
-          height: 330px;
-        }
-        .hero p {
-          font-size: 21px;
-        }
-        .card {
-          padding: 23px;
-        }
-        .story {
-          font-size: 20px;
+        .letter-page {
+          padding-top: 28px;
         }
         .envelope {
-          width: min(94vw, 620px);
-          height: 360px;
+          width: 100%;
+          aspect-ratio: 1.38/1;
         }
         .letter-paper {
-          height: 300px;
-          padding: 30px 28px;
+          width: 83%;
+          height: 81%;
+          padding: 18px;
         }
         .letter-paper p {
-          font-size: 19px;
+          font-size: 15px;
+          line-height: 1.42;
         }
-        .letter-paper h4 {
-          font-size: 35px;
-        }
-        .flap {
-          height: 195px;
-        }
-        .seal {
-          top: 140px;
+        .letter-paper h2 {
+          font-size: 32px;
         }
         .envelope.open .letter-paper {
-          transform: translateY(-235px);
+          transform: translate(-50%, -30%);
+        }
+      }
+      @media (max-width: 400px) {
+        .gate-card {
+          border-radius: 22px;
+        }
+        .bouquet {
+          width: min(100%, 310px);
+          height: 175px;
+          transform: scale(0.82);
+          margin-bottom: -28px;
+        }
+        .love-title {
+          font-size: 50px;
+        }
+        .letter-label {
+          font-size: 10px;
+          padding: 8px 12px;
+        }
+        .envelope {
+          width: 100%;
+          aspect-ratio: 1.25/1;
+        }
+        .letter-paper {
+          width: 86%;
+          height: 83%;
+          padding: 14px;
+        }
+        .letter-paper h2 {
+          font-size: 28px;
+        }
+        .letter-paper p {
+          font-size: 14px;
+          line-height: 1.35;
+          margin-bottom: 8px;
+        }
+        .envelope.open .letter-paper {
+          transform: translate(-50%, -24%);
+        }
+        .seal {
+          width: 52px;
+          height: 52px;
+          font-size: 23px;
         }
       }
       @media (prefers-reduced-motion: reduce) {
-        *,
-        *:before,
-        *:after {
-          animation-duration: 0.01ms !important;
-          transition-duration: 0.01ms !important;
+        * {
+          scroll-behavior: auto !important;
+        }
+        .flap,
+        .letter-paper,
+        .seal,
+        .falling-garden-item {
+          transition: none;
+          animation: none !important;
         }
       }
     </style>
   </head>
+
   <body class="locked">
-    <!-- CHANGE THIS ONE VALUE TO CHANGE THE PASSWORD. Format: YYYY-MM-DD -->
-    <div id="gate">
+    <!-- ================= PASSWORD PAGE ================= -->
+    <section id="gate" aria-label="Locked love letter">
+      <div class="side-particles" id="leftPetals"></div>
+      <div class="side-particles" id="rightPetals"></div>
+      <div class="nav-hearts" id="navHearts"></div>
+
       <div class="gate-card">
-        <div class="gate-heart">♥</div>
-        <h1>For My Love</h1>
-        <p>
-          This little corner of my heart is private.<br />Enter our special date
-          to open it.
+        <h1 class="gate-title">A Little Secret</h1>
+        <p class="gate-subtitle">
+          This love letter is private. Enter our special date and the secret
+          words to open it. ♡
         </p>
+
+        <div class="bouquet" aria-hidden="true">
+          <div class="b-stem s1"></div>
+          <div class="b-stem s2"></div>
+          <div class="b-stem s3"></div>
+          <div class="b-stem s4"></div>
+          <div class="b-stem s5"></div>
+          <div class="leaf l1"></div>
+          <div class="leaf l2"></div>
+          <div class="leaf l3"></div>
+          <div class="leaf l4"></div>
+          <div class="leaf l5"></div>
+
+          <div class="flower f1">
+            <i class="fp fp1"></i><i class="fp fp2"></i><i class="fp fp3"></i
+            ><i class="fp fp4"></i><i class="fp fp5"></i><b class="fc"></b>
+          </div>
+          <div class="flower f2">
+            <i class="fp fp1"></i><i class="fp fp2"></i><i class="fp fp3"></i
+            ><i class="fp fp4"></i><i class="fp fp5"></i><b class="fc"></b>
+          </div>
+          <div class="flower f3">
+            <i class="fp fp1"></i><i class="fp fp2"></i><i class="fp fp3"></i
+            ><i class="fp fp4"></i><i class="fp fp5"></i><b class="fc"></b>
+          </div>
+          <div class="flower f4">
+            <i class="fp fp1"></i><i class="fp fp2"></i><i class="fp fp3"></i
+            ><i class="fp fp4"></i><i class="fp fp5"></i><b class="fc"></b>
+          </div>
+          <div class="flower f5">
+            <i class="fp fp1"></i><i class="fp fp2"></i><i class="fp fp3"></i
+            ><i class="fp fp4"></i><i class="fp fp5"></i><b class="fc"></b>
+          </div>
+          <div class="flower f6 small">
+            <i class="fp fp1"></i><i class="fp fp2"></i><i class="fp fp3"></i
+            ><i class="fp fp4"></i><i class="fp fp5"></i><b class="fc"></b>
+          </div>
+          <div class="flower f7 small">
+            <i class="fp fp1"></i><i class="fp fp2"></i><i class="fp fp3"></i
+            ><i class="fp fp4"></i><i class="fp fp5"></i><b class="fc"></b>
+          </div>
+          <div class="wrap"></div>
+          <div class="ribbon"><span></span></div>
+        </div>
+
+        <label class="field-label" for="password">Special date</label>
         <input
           id="password"
           class="date-input"
           type="date"
           aria-label="Our special date"
         />
-        <button class="unlock" id="unlock">Open My Heart</button>
-        <div class="error" id="error"></div>
+
+        <label class="field-label" for="wordPassword">Secret words</label>
+        <input
+          id="wordPassword"
+          class="word-input"
+          type="text"
+          placeholder="Enter the secret words..."
+          autocomplete="off"
+          spellcheck="false"
+          aria-label="Secret words"
+        />
+
+        <button class="unlock" id="unlock" type="button">Open Letter</button>
+        <div class="error" id="error" aria-live="polite"></div>
       </div>
-    </div>
+    </section>
 
+    <!-- ================= LOVE LETTER PAGE ================= -->
     <div id="site">
-      <header class="topbar">
-        <div class="logo">S♥</div>
-        <div class="brand">
-          <h1>Saii, my love</h1>
-          <p>A small place of my heart</p>
-        </div>
-        <nav>
-          <button class="nav-btn" data-target="home">♡ Home</button>
-          <button class="nav-btn" data-target="letter">♡ My Letter</button>
-          <button class="nav-btn" data-target="memories">♡ Memories</button>
-          <button class="nav-btn" data-target="envelope">
-            ♡ Secret Letter
-          </button>
-        </nav>
-        <button class="hamb" id="hamb">☰</button>
-        <div class="nav-hearts" id="navHearts"></div>
-      </header>
+      <main class="letter-page">
+        <div
+          class="letter-particles"
+          id="letterParticles"
+          aria-hidden="true"
+        ></div>
+        <h1 class="love-title">Love Letter</h1>
+        <p class="love-subtitle">
+          A little letter made especially for
+          <span class="recipient">My Lovely Buenafe</span> ♡
+        </p>
 
-      <div class="petal-column left-col" id="leftPetals"></div>
-      <div class="petal-column right-col" id="rightPetals"></div>
-
-      <main class="container">
-        <section id="home" class="hero">
-          <div class="photo-box">
-            <img src="assets/images/saii.jpg" alt="A treasured photo" />
+        <section class="envelope-stage">
+          <div class="letter-label">
+            ♡ Click the envelope to see the love letter
           </div>
-          <div>
-            <div class="eyebrow">For Sayyed Maulana Solinap</div>
-            <h2>My Dearest Saii</h2>
-            <p>
-              Some feelings are too beautiful to leave unwritten. So I made you
-              a little place where every petal, every word, and every heartbeat
-              says the same thing: <b>I love you.</b>
-            </p>
-            <div class="signature">Forever yours ♡</div>
-          </div>
-        </section>
 
-        <section id="letter">
-          <div class="card">
-            <div class="eyebrow">A letter from my heart</div>
-            <h3>My Dearest Saii,</h3>
-            <div class="story">
-              <p>
-                From the moment I first saw you, the ordinary became beautiful.
-                I carry the warmth of your smile through every day—in quiet
-                moments and in stormy ones.
-              </p>
-              <p>
-                Your laughter is my favorite melody. Your kindness teaches me
-                how to be better. When I picture home, it's your face I see:
-                calm, honest, and glowing with gentle strength.
-              </p>
-              <p>
-                This little website is only a tiny reflection of something much
-                bigger. I want to keep choosing you, listening to you, learning
-                you, and loving you with care.
-              </p>
-              <p>
-                Forever isn't a distant idea when it's you. I love you more than
-                words can dress up, but I will spend my life trying to show you.
-              </p>
-            </div>
-            <div class="signature" style="text-align: right">
-              — with all my heart
-            </div>
-          </div>
-        </section>
-
-        <section id="memories">
-          <div class="card">
-            <div class="eyebrow">Our little memories</div>
-            <h3>Moments I want to keep</h3>
-            <p style="color: #80636b">
-              This love site will be a witness to how our love story unfolds.
-            </p>
-            <div class="photos-grid">
-              <div class="photo">
-                <img src="assets/images/saii2.jpg" alt="Memory 1" />
-              </div>
-              <div class="photo">
-                <img src="assets/images/saii3.jpg" alt="Memory 2" />
-              </div>
-              <div class="photo">
-                <img src="assets/images/saii4.jpg" alt="Memory 3" />
-              </div>
-              <div class="photo">
-                <img src="assets/images/saii5.jpg" alt="Memory 4" />
-              </div>
-            </div>
-
-            <!-- <div class="video-container">
-      <video autoplay muted loop playsinline preload="auto">
-        <source src="assets/videos/Recording 2025-09-05 104545.mp4" type="video/mp4">
-        Your browser does not support the video element.
-      </video>
-      <video autoplay muted loop playsinline preload="auto">
-        <source src="assets/videos/love-video.mp4" type="video/mp4">
-        Your browser does not support the video element.
-      </video>
-      <div class="video-caption">A little moving memory of us ♡</div>
-    </div> -->
-          </div>
-        </section>
-
-        <section id="envelope" class="envelope-wrap">
-          <h3>One more thing...</h3>
-          <p>There is a letter waiting inside. Click the envelope.</p>
           <div
             class="envelope"
             id="envelopeBox"
-            aria-label="Open secret love letter"
             role="button"
             tabindex="0"
+            aria-label="Open love letter for Lovely Buenafe"
+            aria-expanded="false"
           >
             <div class="env-back"></div>
-            <div class="env-front"></div>
-            <div class="letter-paper">
-              <h4>My Love,</h4>
-              <p>
-                If I could put my heart into an envelope, this is what I would
-                give you.
-              </p>
-              <p>
-                You are one of the most beautiful parts of my life, and I hope
-                you always remember how deeply you are loved.
-              </p>
-              <p>
-                Thank you for every smile, every moment, and every little thing
-                that makes being with you feel special.
-              </p>
-              <p>
-                I choose you. Today, tomorrow, and in all the ordinary days
-                between.
-              </p>
-              <p
-                style="
-                  text-align: right;
-                  font-family: &quot;Great Vibes&quot;;
-                  font-size: 25px;
-                "
-              >
-                Yours, always ♡
-              </p>
-              <button class="close-letter" id="closeLetter">
-                Close letter
-              </button>
-            </div>
-            <div class="flap"></div>
-            <div class="seal">♥</div>
-          </div>
-        </section>
-      </main>
-      <footer
-        style="text-align: center; padding: 15px 20px 45px; color: #916c76"
-      >
-        Made with love, for you. ♡
-      </footer>
-    </div>
 
-    <div class="lightbox" id="lightbox">
-      <img id="lightImg" alt="Enlarged memory" />
+            <!-- Letter begins completely inside the envelope -->
+            <article class="letter-paper" id="loveLetter">
+              <h2>My Lovely Buenafe,</h2>
+              <p>
+                I made this little letter especially for you love because some
+                feelings deserve more than a simple message.
+              </p>
+              <p>
+                Thank you for everything your effort, time, and love I
+                appreciate it all. I am grateful for your presence in my life,
+                and I want you to know that you are truly special to me nugay
+              </p>
+              <p>
+                I hope you always remember how appreciated, cherished, and loved
+                you are. Having you in my life is something I will always
+                treasure.
+              </p>
+              <p>
+                This letter may have started hidden inside an envelope, but my
+                feelings for you never need to be hidden.
+              </p>
+              <p>
+                I dont know what the future holds for us, but I do know that I
+                want to spend it with you. I love you more than words can
+                express, and I am so grateful to have you in my life.
+              </p>
+              <p>
+                And always remember, no matter what happens, I will always be
+                here for you. You are my everything, and I will always love you.
+                I'm so proud and I believe in you po.
+              </p>
+              <p class="signature">Yours, Eric</p>
+            </article>
+
+            <div class="flap"></div>
+            <div class="env-front"></div>
+            <div class="seal" aria-hidden="true">♥</div>
+          </div>
+
+          <!-- <p class="envelope-hint" id="envelopeHint">
+            Tap or click the envelope to open your letter ♡
+          </p> -->
+        </section>
+
+        <!-- <p class="letter-footer">Made especially for Lovely Buenafe ♡</p> -->
+      </main>
     </div>
 
     <script>
       /* =========================================================
    EASY SETTINGS — CHANGE THESE VALUES
    ========================================================= */
-      const LOVE_PASSWORD = "2026-08-09"; // <-- CHANGE THE DATE HERE
-      const PETAL_COUNT_PER_SIDE = 32; // More petals = higher number
-      const PETAL_RESPAWN_MS = 700; // Smaller = more frequent new petals
+      const LOVE_PASSWORD = "2026-09-22";
+      const WORD_PASSWORD = "thanks sa pag accept cutie boy!";
 
-      /* PASSWORD */
-      const gate = document.getElementById("gate");
-      const site = document.getElementById("site");
+      /* ================= PASSWORD ================= */
       const pass = document.getElementById("password");
+      const wordPass = document.getElementById("wordPassword");
       const error = document.getElementById("error");
+      const letterParticles = document.getElementById("letterParticles");
+      let letterParticleInterval;
+
+      function spawnLetterParticle() {
+        const isFlower = Math.random() < 0.38;
+        const particle = document.createElement("span");
+        particle.className = isFlower
+          ? "falling-garden-item falling-garden-flower"
+          : "falling-garden-item falling-garden-petal";
+        if (isFlower) particle.textContent = Math.random() < 0.5 ? "✿" : "❀";
+        particle.style.setProperty("--start-x", Math.random() * 100 + "%");
+        particle.style.setProperty(
+          "--drift",
+          (Math.random() * 180 - 90).toFixed(0) + "px",
+        );
+        particle.style.setProperty(
+          "--fall-duration",
+          7 + Math.random() * 5 + "s",
+        );
+        if (isFlower) {
+          particle.style.setProperty(
+            "--flower-size",
+            16 + Math.random() * 14 + "px",
+          );
+        }
+        letterParticles.appendChild(particle);
+        particle.addEventListener("animationend", () => particle.remove());
+      }
+
+      function startLetterParticles() {
+        if (
+          letterParticleInterval ||
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ) {
+          return;
+        }
+        for (let i = 0; i < 12; i++) spawnLetterParticle();
+        letterParticleInterval = setInterval(spawnLetterParticle, 650);
+      }
 
       function unlock() {
-        if (pass.value === LOVE_PASSWORD) {
+        const dateCorrect = pass.value === LOVE_PASSWORD;
+        const wordsCorrect =
+          wordPass.value.trim().toLowerCase() ===
+          WORD_PASSWORD.trim().toLowerCase();
+
+        if (dateCorrect && wordsCorrect) {
           document.body.classList.remove("locked");
           document.body.classList.add("site-ready");
           sessionStorage.setItem("loveUnlocked", "yes");
+          startLetterParticles();
         } else {
           error.textContent =
-            "That date isn't the key to my heart. Try again ♡";
-          pass.animate(
-            [
-              { transform: "translateX(-7px)" },
-              { transform: "translateX(7px)" },
-              { transform: "translateX(0)" },
-            ],
-            { duration: 240 },
-          );
+            "The date and secret words must both be correct. Try again ♡";
+          document
+            .querySelector(".gate-card")
+            .animate(
+              [
+                { transform: "translateX(-7px)" },
+                { transform: "translateX(7px)" },
+                { transform: "translateX(-4px)" },
+                { transform: "translateX(0)" },
+              ],
+              { duration: 260 },
+            );
         }
       }
-      document.getElementById("unlock").onclick = unlock;
+
+      document.getElementById("unlock").addEventListener("click", unlock);
       pass.addEventListener("keydown", (e) => {
         if (e.key === "Enter") unlock();
       });
+      wordPass.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") unlock();
+      });
+
       if (sessionStorage.getItem("loveUnlocked") === "yes") {
         document.body.classList.remove("locked");
         document.body.classList.add("site-ready");
+        startLetterParticles();
       }
 
-      /* NAV */
-      function scrollToTarget(id) {
-        document
-          .getElementById(id)
-          ?.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-      document
-        .querySelectorAll("[data-target]")
-        .forEach((b) => (b.onclick = () => scrollToTarget(b.dataset.target)));
-      document.getElementById("hamb").onclick = () => {
-        const nav = document.querySelector("nav");
-        const visible = nav.style.display === "flex";
-        nav.style.cssText = visible
-          ? ""
-          : "display:flex;position:absolute;top:74px;right:8px;flex-direction:column;background:#fff;padding:10px;border-radius:18px;box-shadow:0 20px 50px #55203322";
-      };
-
-      /* PETALS — lots of petals, only on the sides */
-      const petalSymbols = ["🌸", "🌺", "🌷", "🌹", "💮"];
-      function spawnPetal(col, side) {
+      /* ================= BLUE PETALS ================= */
+      function spawnPetal(container, side) {
         const p = document.createElement("span");
         p.className = "petal";
-        p.textContent =
-          petalSymbols[Math.floor(Math.random() * petalSymbols.length)];
-        p.style.left = Math.random() * 85 + "%";
-        p.style.fontSize = 13 + Math.random() * 25 + "px";
+        p.style.left = Math.random() * 90 + "%";
         p.style.setProperty(
           "--drift",
-          (side === "left" ? 1 : -1) * (20 + Math.random() * 100) + "px",
+          (side === "left" ? 1 : -1) * (20 + Math.random() * 110) + "px",
         );
-        p.style.animationDuration = 5 + Math.random() * 8 + "s";
-        p.style.animationDelay = -Math.random() * 9 + "s";
-        col.appendChild(p);
-        setTimeout(() => p.remove(), 16000);
+        p.style.animationDuration = 5 + Math.random() * 7 + "s";
+        p.style.animationDelay = -Math.random() * 8 + "s";
+        container.appendChild(p);
+        setTimeout(() => p.remove(), 15000);
       }
-      const left = document.getElementById("leftPetals"),
-        right = document.getElementById("rightPetals");
-      for (let i = 0; i < PETAL_COUNT_PER_SIDE; i++) {
-        spawnPetal(left, "left");
-        spawnPetal(right, "right");
+      const leftPetals = document.getElementById("leftPetals");
+      const rightPetals = document.getElementById("rightPetals");
+
+      for (let i = 0; i < 26; i++) {
+        spawnPetal(leftPetals, "left");
+        spawnPetal(rightPetals, "right");
       }
       setInterval(() => {
-        spawnPetal(left, "left");
-        spawnPetal(right, "right");
-      }, PETAL_RESPAWN_MS);
+        spawnPetal(leftPetals, "left");
+        spawnPetal(rightPetals, "right");
+      }, 650);
 
-      /* HEARTS FALLING UNDER NAV */
-      const hearts = document.getElementById("navHearts");
+      /* ================= FALLING BLUE HEARTS ================= */
+      const navHearts = document.getElementById("navHearts");
       setInterval(() => {
         const h = document.createElement("span");
-        h.className = "nav-heart";
+        h.className = "falling-heart";
         h.textContent = "♥";
         h.style.left = Math.random() * 100 + "%";
-        h.style.fontSize = 9 + Math.random() * 13 + "px";
-        h.style.animationDuration = 2.5 + Math.random() * 2.5 + "s";
-        hearts.appendChild(h);
-        setTimeout(() => h.remove(), 6000);
-      }, 350);
+        h.style.fontSize = 9 + Math.random() * 12 + "px";
+        h.style.animationDuration = 3 + Math.random() * 3 + "s";
+        navHearts.appendChild(h);
+        setTimeout(() => h.remove(), 7000);
+      }, 450);
 
-      /* ENVELOPE */
-      const env = document.getElementById("envelopeBox");
-      env.onclick = (e) => {
-        if (e.target.id !== "closeLetter") env.classList.add("open");
-      };
-      env.onkeydown = (e) => {
-        if (e.key === "Enter" || e.key === " ") {
+      /* ================= ENVELOPE ================= */
+      const envelope = document.getElementById("envelopeBox");
+      const hint = document.getElementById("envelopeHint");
+
+      function openEnvelope() {
+        envelope.classList.add("open");
+        envelope.setAttribute("aria-expanded", "true");
+        hint.textContent = "Your love letter is open ♡";
+      }
+
+      envelope.addEventListener("click", () => {
+        if (!envelope.classList.contains("open")) openEnvelope();
+      });
+
+      envelope.addEventListener("keydown", (e) => {
+        if (
+          (e.key === "Enter" || e.key === " ") &&
+          !envelope.classList.contains("open")
+        ) {
           e.preventDefault();
-          env.classList.add("open");
-        }
-      };
-      document.getElementById("closeLetter").onclick = (e) => {
-        e.stopPropagation();
-        env.classList.remove("open");
-      };
-
-      /* PHOTO LIGHTBOX */
-      const lb = document.getElementById("lightbox"),
-        li = document.getElementById("lightImg");
-      document.querySelectorAll(".photo").forEach(
-        (card) =>
-          (card.onclick = () => {
-            li.src = card.querySelector("img").src;
-            lb.classList.add("show");
-          }),
-      );
-      lb.onclick = () => lb.classList.remove("show");
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") {
-          lb.classList.remove("show");
-          env.classList.remove("open");
+          openEnvelope();
         }
       });
     </script>
